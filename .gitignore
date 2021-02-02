@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
@@ -523,7 +522,8 @@ dist
 
 # TernJS port file
 .tern-port
-<<<<<<< HEAD
->>>>>>> f1d95a3 (Initial commit)
-=======
->>>>>>> 019cf0175c378d180a70d6728f2d0814f19fc7fc
+
+.eslintcache
+
+.lock
+
