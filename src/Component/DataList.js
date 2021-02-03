@@ -29,7 +29,7 @@ class DataList extends Component
 
         axios.post(url,
             //{deptno:deptno,dname:dname,loc:loc}
-            {deptno,dname,loc}//키와값이 같을경우 한번만 써도 된다
+            {deptno,dname,loc}//키와값이 같을경우 한번만 써도 된다 아아아아아아아아
 
         ).then((responseData)=>{
             console.log("추가 성공");
