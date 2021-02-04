@@ -1,20 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './header.css';
 
 const header = () => {
-    const activeStyle = {
-        color: 'green',
-        fontSize: '2rem'
-    };
-
     return (
-        <div>
-            <ul>
-                <li><NavLink exact to="/main" activeStyle={activeStyle}>main</NavLink></li>
-                <li><NavLink exact to="/main/mypage" activeStyle={activeStyle}>mypage</NavLink></li>
-    
-            </ul>
-            <hr/>
+        <div className="Header_container">
+            <div className="Header_wrapper">
+                <div>FoodStargram</div>
+                <input type="text" name="search" placeholder="검색" />
+                <ul className="Header_Icons">
+                    <li><NavLink exact to="/main" >Home</NavLink></li>
+                    <li><NavLink exact to="/main/Chatting" >Chating</NavLink></li>
+                    <li><NavLink exact to="/main/mypage" >Mypage</NavLink></li>
+                </ul>
+            </div>
         </div>
     );
 };
