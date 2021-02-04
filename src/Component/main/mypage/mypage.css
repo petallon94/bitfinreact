@@ -2,14 +2,16 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom:120px;
 }
 
 .profile_container{
     display:flex;
     justify-content: center;
     align-items: center;
-    margin-top:60px;
+    margin-top:120px;
     margin-bottom:30px;
+
 }
 .profile_wrapper{
     display:flex;
@@ -17,6 +19,7 @@
     align-items: center;
     width:1200px;
     border:1px solid;
+    padding:20px 0px;
 }
 .profile_image{
     width:200px;
@@ -39,19 +42,28 @@
 .profile_nameplace{
     display:flex;
     align-items: center;
-    border:1px solid;
+    
 }
 
 .profile_information{
     display: flex;
     align-items: center;
-    border:1px solid;
+    
     font-size:20px;  
     margin-bottom:20px;
+    
 }
 .profile_information div{
     margin-right:30px;
 }
 .profile_introduce{
-    border:1px solid;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 10; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+    line-height: 1.2em;
+    /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+
 }
