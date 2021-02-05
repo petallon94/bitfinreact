@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route} from 'react-router-dom';
 import {header} from './Component/header';
+import Follow from './Component/main/follow/FollowBody';
 import {list} from './Component/main/mainlist'
 import {mypage} from './Component/main/mypage'
 
@@ -12,6 +13,7 @@ class RouteMain extends Component {
                 <Route path="/main" component={header}/>
                 <Route exact path="/main" component={list}/>
                 <Route exact path="/main/mypage" component={mypage}/>
+                <Route exact path="/main/modal" component={Follow}/>
             </div>
         );
     }
