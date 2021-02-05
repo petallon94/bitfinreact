@@ -2,8 +2,11 @@ import React,{Component} from 'react';
 import './mypage.css';
 import { Link } from 'react-router-dom';
 import MypageList from './mypage_list';
+import Button from '@material-ui/core/Button';
+
 
 class mypage extends Component{
+    
     render(){
         return(
             <div className="mypage_container">
@@ -15,7 +18,8 @@ class mypage extends Component{
                         <div className="profile_place">
                             <div className="profile_nameplace">
                                 <h1>Imgeon_ny</h1>
-                                <Link exact to="/" >프로필편집</Link>
+                                
+                                <Link to='/main'><Button variant="contained">프로필 편집</Button></Link>
                             </div>
                             <div className="profile_information">
                                 <div>게시물 : 1</div>
