@@ -1,19 +1,30 @@
+.main_mainlist{
+    max-width: 1200px;
+}
 .main__container {
-    display: 'flex';
-    flex-wrap: 'wrap';
-    justify-content: 'space-around';
-    overflow: 'hidden';
-    background-color: white;
+    display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: masonry;
   }
 
 
 .main_postcard {
-    border: 10px solid gray;
-    width: 500px;
-    height: auto;
+    margin: 0;
+    display: grid;
+    grid-template-rows: 1fr auto;
 
 }
-.main_icon {
-    color: 'rgba(255, 255, 255, 0.54)',
+.main_img {
+    max-width: 100%;
+    display: block;
+    grid-row: 1 / -1;
+    grid-column: 1;
 }
-
+.main_listitem_wrapper{
+    grid-row: 2;
+    grid-column: 1;
+    background-color: rgba(255,255,255,.5);
+    padding: .2em .5em;
+    justify-self: start; 
+}
