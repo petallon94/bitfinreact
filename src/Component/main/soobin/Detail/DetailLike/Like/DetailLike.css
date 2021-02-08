@@ -1,0 +1,22 @@
+
+.DetailLike {
+
+}
+.DetailLike .DetailLike-bar {
+    width:100%;
+    height:100%;
+}
+.DetailLike .DetailLike-bar .DetailLike-box {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+}
+.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-nick {
+
+}
+.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-sub {
+
+}
+.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-day {
+
+}

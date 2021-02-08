@@ -1,0 +1,33 @@
+.DetailSubject {
+    width:40%;
+    padding: 15px;
+}
+
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-profile > img{
+    width:50px;
+    height:50px;
+    border-radius:100%;
+}
+
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-profile > div{
+    position: relative;
+    left: 70px;
+    top: -50px;
+}
+
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-profile .DetailSubject-nick {
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-profile .DetailSubject-address {
+    font-size: 0.5em;
+}
+
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-profile .DetailSubject-menu{
+    position: relative;
+    left: 430px;
+    top: -90px;
+}
+.DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-sub{
+    margin-top: -50px;
+}

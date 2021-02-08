@@ -1,0 +1,20 @@
+.DetailPicture {
+    margin:0;
+    padding:0;
+}
+.DetailPicture-bar {
+    width:100%;
+    height:100%;
+}
+.DetailPicture-bar .DetailPicture-box {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+  	justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+.DetailPicture-bar .DetailPicture-box img{
+    width: auto;
+    height: 400px;
+}

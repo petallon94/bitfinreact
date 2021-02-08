@@ -5,6 +5,7 @@ import Follow from './Component/main/follow/FollowBody';
 import {list} from './Component/main/mainlist'
 import {mypage} from './Component/main/mypage'
 import {LoginMain,LoginSignup} from './Component/login'
+import Detail from './Component/main/soobin/Detail/DetailPage'
 
 class RouteMain extends Component {
     render() {
@@ -17,7 +18,7 @@ class RouteMain extends Component {
                 <Route path="/main/mypage" component={mypage}/>
                 <Route exact path="/main/mypage" component={mypage}/>
                 <Route exact path="/main/modal" component={Follow}/>
-
+                <Route exact path="/main/detail" component={Detail}/>
             </div>
         );
     }

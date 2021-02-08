@@ -1,0 +1,8 @@
+.dp-body{
+    display: flex;
+  	justify-content: center;
+}
+
+.dp-box{
+    width: 1200px;
+}
