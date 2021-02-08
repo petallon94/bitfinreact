@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom';
 import MypageList from './mypage_list';
 import Button from '@material-ui/core/Button';
 
-
-
-class mypage extends Component{
+class authorPage extends Component{
     constructor(props){
         super(props);
     }
@@ -22,7 +20,7 @@ class mypage extends Component{
         let url = "http://localhost:9001/mypage/listMember";
         axios.get(url,{
             params:{
-                mnum:1
+                mnum:this.props.location.state.userNumber
             }
         })
         .then(respones => {
@@ -40,7 +38,7 @@ class mypage extends Component{
         let url = "http://localhost:9001/mypage/listCount";
         axios.get(url,{
             params:{
-                mnum:1
+                mnum:this.props.location.state.userNumber
             }
         })
         .then(respones => {
@@ -58,7 +56,7 @@ class mypage extends Component{
         let url = "http://localhost:9001/mypage/followCount";
         axios.get(url,{
             params:{
-                mnum:1
+                mnum:this.props.location.state.userNumber
             }
         })
         .then(respones => {
@@ -79,6 +77,7 @@ class mypage extends Component{
         this.getMypageMember();
         this.getMyReviewsCount();
         this.getFollowCount();
+        
     }
 
     render(){
@@ -92,7 +91,6 @@ class mypage extends Component{
                         <div className="profile_place">
                             <div className="profile_nameplace">
                                 <h1>{this.state.mypageMember.mnick}</h1>
-                                <Link to="/main"><Button variant="contained">프로필 편집</Button></Link>
                             </div>
                             <div className="profile_information">
                                 <div>게시물 : {this.state.myReviewsCount}</div>
@@ -105,10 +103,10 @@ class mypage extends Component{
                         </div>
                     </div>
                 </div>
-                <MypageList/>
+                <MypageList />
             </div>
         )
     }
 }
 
-export default mypage;
+export default authorPage;

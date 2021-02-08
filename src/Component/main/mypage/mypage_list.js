@@ -10,13 +10,23 @@ class mypage_list extends Component{
 
     constructor(props){
         super(props);
+        
     }
     state = {
         mypageList:[]
     }
+
+
+
+    // 리스트 불러오기
+
     getMypageList = () => {
         let url = "http://localhost:9001/mypage/list";
-        axios.get(url)
+        axios.get(url,{
+            params:{
+                mnum:1
+            }
+        })
         .then(respones => {
             console.log(respones.data);
             this.setState({
@@ -25,12 +35,14 @@ class mypage_list extends Component{
         }).catch(error => {
             console.log("마이페이지 리스트 오류 : " + error);
         })
-
     }
 
     componentDidMount(){
         this.getMypageList();
     }
+
+
+
 
     render(){
         return(
@@ -53,7 +65,7 @@ class mypage_list extends Component{
 
                     {/* 리스트 내용 시작 */}
                     {this.state.mypageList ? this.state.mypageList.map(r => {
-                        return <MypagePrint rcontent={r.rcontent} />
+                        return <MypagePrint rcontent={r.rcontent} key={r.rnum} memberNumber={r.rmnum} nickname={r.mnick} writeDay={r.rwriteday}  />
                         }) : ''}
                         
 
