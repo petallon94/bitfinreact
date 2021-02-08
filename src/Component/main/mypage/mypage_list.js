@@ -1,10 +1,37 @@
 import React,{Component} from 'react';
+import axios from 'axios';
 import './mypage_list.css';
 import { NavLink } from 'react-router-dom';
+import MypagePrint from './MypagePrint';
 
 
 
 class mypage_list extends Component{
+
+    constructor(props){
+        super(props);
+    }
+    state = {
+        mypageList:[]
+    }
+    getMypageList = () => {
+        let url = "http://localhost:9001/mypage/list";
+        axios.get(url)
+        .then(respones => {
+            console.log(respones.data);
+            this.setState({
+                mypageList:respones.data
+            })
+        }).catch(error => {
+            console.log("마이페이지 리스트 오류 : " + error);
+        })
+
+    }
+
+    componentDidMount(){
+        this.getMypageList();
+    }
+
     render(){
         return(
             <div className="mypage_list_container">
@@ -25,98 +52,10 @@ class mypage_list extends Component{
                 <div className="mypage_list_wrapper">
 
                     {/* 리스트 내용 시작 */}
-
-                    <div className="mypage_listitem">
-                        <div className="listitem_img">
-                            <img src="http://placehold.it/200" alt="리스트" />
-                        </div>    
-                        <div className="listitem_btn">
-                            <span>Dec 17, 2020</span>
-                            <span>❤</span>
-                        </div>
-                        <div className="listitem_content_wrapper">
-                            <div className="listitem_title">
-                                contents titlefsdfsdsdfdffdsfsfdfsd
-                            </div>
-                            <div className="listitem_contents">
-                            contcontcontcontcontcontcontcontcontcontcontcontc
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mypage_listitem">
-                        <div className="listitem_img">
-                            <img src="http://placehold.it/100" alt="리스트" />
-                        </div>    
-                        <div className="listitem_btn">
-                            <span>Dec 17, 2020</span>
-                            <span>❤</span>
-                        </div>
-                        <div className="listitem_content_wrapper">
-                            <div className="listitem_title">
-                                contents titlefsdfsdsdfdffdsfsfdfsd
-                            </div>
-                            <div className="listitem_contents">
-                            contcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcont
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mypage_listitem">
-                        <div className="listitem_img">
-                            <img src="http://placehold.it/300" alt="리스트" />
-                        </div>    
-                        <div className="listitem_btn">
-                            <span>Dec 17, 2020</span>
-                            <span>❤</span>
-                        </div>
-                        <div className="listitem_content_wrapper">
-                            <div className="listitem_title">
-                                contents titlefsdfsdsdfdffdsfsfdfsd
-                            </div>
-                            <div className="listitem_contents">
-                            contcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcont
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mypage_listitem">
-                        <div className="listitem_img">
-                            <img src="http://placehold.it/500" alt="리스트" />
-                        </div>    
-                        <div className="listitem_btn">
-                            <span>Dec 17, 2020</span>
-                            <span>❤</span>
-                        </div>
-                        <div className="listitem_content_wrapper">
-                            <div className="listitem_title">
-                                contents titlefsdfsdsdfdffdsfsfdfsd
-                            </div>
-                            <div className="listitem_contents">
-                            contcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcont
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="mypage_listitem">
-                        <div className="listitem_img">
-                            <img src="http://placehold.it/600" alt="리스트" />
-                        </div>    
-                        <div className="listitem_btn">
-                            <span>Dec 17, 2020</span>
-                            <span>❤</span>
-                        </div>
-                        <div className="listitem_content_wrapper">
-                            <div className="listitem_title">
-                                contents titlefsdfsdsdfdffdsfsfdfsd
-                            </div>
-                            <div className="listitem_contents">
-                            contcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcontcont
-                            </div>
-                        </div>
-                    </div>
-                    
-
+                    {this.state.mypageList ? this.state.mypageList.map(r => {
+                        return <MypagePrint rcontent={r.rcontent} />
+                        }) : ''}
+                        
 
                 </div>
                 
