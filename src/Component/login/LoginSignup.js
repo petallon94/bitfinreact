@@ -5,13 +5,16 @@ import axios from 'axios';
 
 class LoginSignup extends Component{
 
-    
+   
+
     state ={
         memailid : "",
         mnick : "",
         mpw : "",
         mpwcc :"",
-        pswcheck : ""
+        pswcheck : "",
+        checkid : "",
+        checkNick : "",
         };
 
         //이메일 형식 확인
@@ -28,6 +31,46 @@ class LoginSignup extends Component{
               }
             }, 500);
           }
+
+          /// 이메일 중복체크
+          checkDupliEmail = (e) =>{
+            let data = this.state;
+            
+            let url = "http://localhost:9001/member/checkEmail";
+
+            
+              axios.post(url,data)
+            .then(res=>{
+              
+              console.log(res.data);
+              this.setState({ checkid:res.data });
+
+            }).catch(error => {
+              console.log(error.response)
+          });
+            
+          }
+
+
+          //닉네임 중복체크
+          checkDupliNick = (e) =>{
+            let data = this.state;
+            let url = "http://localhost:9001/member/checkNick";
+
+            
+              axios.post(url,data)
+            .then(res=>{
+              
+              this.setState({checkNick:res.data})
+
+            }).catch(error => {
+              console.log(error.response)
+          });
+            
+          }
+
+
+
 
           createEmail =(e)=> {
             // console.log("사인업 이메일: ", e.target.value);
@@ -114,28 +157,21 @@ class LoginSignup extends Component{
               memInsert =(e)=>{
                 let data = this.state;
                 let url = "http://localhost:9001/member/add";
-                console.log("1:"+data.memailid);
-                console.log("2:"+data.mnick);
-                console.log("3:"+data.mpw);
 
                 setTimeout(function() {
                   console.log('Works!');
                   axios.post(url,data)
                 .then(res=>{
-
-                  alert("성공!!!!");
-                  this.setState({
-                    memailid : "",
-                    mnick : "",
-                    mpw : "",
-                    mpwcc :""
-                  })
-
-                  this.props.history.push("./login");
+                  alert("회원가입 성공! 로그인해주세요!");
+                  this.props.history.push("http://localhost:3000/login");
                 })
-                }, 3000);
+                }, 2000);
 
                 
+              }
+
+              memalert =(e)=>{
+                alert("조건에 맞지 않는 상황이 있습니다. 확인해주세요!");
               }
 
 
@@ -153,6 +189,8 @@ class LoginSignup extends Component{
 
     render(){
 
+      const {checkid}=this.state;
+      
         return(
             <div className = "Signupmm">
                
@@ -163,7 +201,11 @@ class LoginSignup extends Component{
 
                <div className = "Signupform">
                <input className ="Signupemail" name ="memailid" onChange={e => this.createEmail(e)} placeholder="휴대폰 번호 또는 이메일 주소"/>
+               <button className ="checkEmailbtn" onClick ={this.checkDupliEmail.bind(this)} >중복확인</button>  
+               {this.state.checkid===1?(<span>아이디가 중복되었습니다.</span>):this.state.checkid===0?(<span>아이디 사용 가능합니다.</span>):null}
                 <input className ="Signupnick" name ="mnick" onChange={e=>this.createNick(e)} placeholder="닉네임" />
+                <button className ="checkEmailbtn" onClick ={this.checkDupliNick.bind(this)} >중복확인</button>  
+                {this.state.checkNick===1?(<span>닉네임이 중복되었습니다.</span>):this.state.checkNick===0?(<span>닉네임 사용 가능합니다.</span>):null}
                 <input className ="Signuppsw" name ="mpw" onChange={e=>this.createPsw(e)} placeholder="비밀 번호" type = "password" />
                 <input className ="Signuppswcc" name ="mpwcc" onChange={e => this.repeatPassword(e)} placeholder="비밀 번호 확인" type="password"/>
                   {this.state.memailid ? (this.state.isValidEmail ? ( <span style={{ color: "blue" }}>사용가능한 email입니다.</span>
@@ -176,7 +218,9 @@ class LoginSignup extends Component{
                 {this.state.mpwcc ? ( this.state.isMatchPassword ? (<span style={{ color: "blue" }}>비밀번호 확인완료</span>
                 ) : (<span style={{ color: "red" }}> 비밀번호가 일치하지 않습니다.</span>)) : null} <br></br>
                    
-                   <button className ="Signupbtn" onClick ={this.memInsert.bind(this)} >가입</button>
+                {this.state.isMatchPassword &&this.state.isValidEmail&& this.state.isValidNick&& this.state.isValidPsw ? (<button className ="Signupbtn" onClick ={this.memInsert.bind(this)} >가입</button>)
+                :(<button className ="Signupbtn" onClick ={this.memalert.bind(this)} >조건 다 만족 후 가입</button>)}
+                   
                    <a>가입하면  호로록의 약관, 데이터 정책, 및 쿠키정책에 동의하게 됩니다.</a>
 
                </div>

@@ -79,8 +79,8 @@ class list extends Component{
 
     // 기존의 값들을 복사하고, checked 값을 덮어쓰기
     newPosting[index] = { 
-      ...likes, 
-      checked: !likes.checked
+      //...likes, 
+      //checked: !likes.checked
     };
 
     
