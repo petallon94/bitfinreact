@@ -5,6 +5,7 @@ import MypageList from './mypage_list';
 import Button from '@material-ui/core/Button';
 
 
+
 class mypage extends Component{
     
     render(){
