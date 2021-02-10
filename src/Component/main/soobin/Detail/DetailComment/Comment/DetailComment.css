@@ -1,6 +1,5 @@
-
 .DetailComment {
-    margin-top: 20px;
+   
 }
 .DetailComment .DetailComment-bar {
     width:100%;
@@ -8,10 +7,12 @@
 }
 .DetailComment .DetailComment-bar .DetailComment-box {
     margin: 0 auto;
+    margin-left: 10px;
     display: flex;
     align-items: center;
+    height: 110px;
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-nick > img{
+.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-profile > img{
     width:50px;
     height:50px;
     border-radius:100%;
@@ -23,23 +24,23 @@
     left: 20px;
 }
 
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-sub {
+.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-sub {
     font-size: 1.2em;
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-day {
+.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-day {
     position: relative;
     font-size: 0.7em;
     top: 40px;
     left: -45px;
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-comment {
+.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-comment {
     position: relative;
     font-size: 0.7em;
     font-weight: bold;
     top: 40px;
     left: -20px;
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-icons{
+.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-icons{
     position: relative;
-    left: 930px;
+    left: 860px;
 }

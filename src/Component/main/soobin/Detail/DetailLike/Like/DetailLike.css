@@ -10,6 +10,8 @@
     margin: 0 auto;
     display: flex;
     align-items: center;
+    height: 80px;
+    margin-top: -15px;
 }
 .DetailLike .DetailLike-bar .DetailLike-box .DetailLike-nick {
 
