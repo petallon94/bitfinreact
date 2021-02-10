@@ -6,13 +6,6 @@ import DetailCommentContainer from './DetailComment/DetailCommentContainer';
 import './DetailPage.css';
 
 class DetailPage extends Component {
-    constructor(props) {
-        super(props); // React.Component의 생성자 메소드를 먼저 실행
-    this.state = {
-        modalOpen: false,
-    }
-};
-    
     render() {
         return (
             <div className='dp-body'>
