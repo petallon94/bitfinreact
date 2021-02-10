@@ -14,7 +14,7 @@ class RouteMain extends Component {
                 <Route exact path="/login/signup" component={LoginSignup}/>
                 <Route path="/main" component={header}/>
                 <Route exact path="/main" component={list}/>
-                <Route path="/main/mypage" component={mypage}/>
+                <Route path="/main/mypage/:num" component={mypage}/>
                 <Route exact path="/main/mypage" component={mypage}/>
                 <Route exact path="/main/modal" component={Follow}/>
 

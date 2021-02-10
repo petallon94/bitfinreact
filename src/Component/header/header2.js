@@ -10,8 +10,9 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
 import { FaLaughWink, FaHeart, FaComments} from "react-icons/fa";
 import {BiSearchAlt, BiMenu } from "react-icons/bi";
-import {FiMoreVertical} from "react-icons/fi";
+import {FiMoreVertical, FiLogIn} from "react-icons/fi";
 import { FcSelfie } from "react-icons/fc";
+import { NavLink } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -20,9 +21,6 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
     border: 0,
     borderRadius: 3,
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   title: {
     display: 'none',
@@ -124,6 +122,7 @@ export default function PrimarySearchAppBar() {
     </Menu>
   );
 
+  {/*모바일일때 */}
   const mobileMenuId = 'primary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
@@ -136,12 +135,14 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem>
+      <NavLink exact to="/main/follow" >
         <IconButton aria-label="show 4 new mails" color="inherit">
           <Badge badgeContent={4} color="secondary">
             <FaLaughWink />
           </Badge>
         </IconButton>
-        <p>Messages</p>
+        <p>follower</p>
+        </NavLink>
       </MenuItem>
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -149,15 +150,25 @@ export default function PrimarySearchAppBar() {
             <FaHeart />
           </Badge>
         </IconButton>
-        <p>Notifications</p>
+        <p>likes</p>
       </MenuItem>
       <MenuItem>
+        <NavLink exact to="/main/chatting" >
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <Badge badgeContent={1} color="secondary">
             <FaComments />
           </Badge>
         </IconButton>
         <p>chatting</p>
+        </NavLink>
+      </MenuItem>
+      <MenuItem>
+        <NavLink exact to="/login" >
+        <IconButton aria-label="show 11 new notifications" color="inherit">
+          <FiLogIn />
+        </IconButton>
+        <p>login</p>
+        </NavLink>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -168,7 +179,7 @@ export default function PrimarySearchAppBar() {
         >
           <FcSelfie />
         </IconButton>
-        <p>Profile</p>
+        <NavLink exact to="/main/mypage"><p>Profile</p></NavLink>
       </MenuItem>
     </Menu>
   );
@@ -177,17 +188,13 @@ export default function PrimarySearchAppBar() {
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="open drawer"
-          >
-            <BiMenu />
-          </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
-            호로록(Just do eat)
+          {/*타이틀 */}
+          <NavLink exact to="/main" >
+          <Typography className={classes.title} variant="h6" edge="start" noWrap >
+            호로록(Just do eat)          
           </Typography>
+          </NavLink>  
+          {/*검색 */}
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <BiSearchAlt />
@@ -214,9 +221,14 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 1 new notifications" color="inherit">
+            <NavLink exact to="/main/Chatting" >
               <Badge badgeContent={1} color="secondary">
                 <FaComments />
               </Badge>
+              </NavLink>
+            </IconButton>
+            <IconButton aria-label="show 1 new notifications" color="inherit">
+                <FiLogIn />
             </IconButton>
             <IconButton
               edge="end"
