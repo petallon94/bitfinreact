@@ -1,18 +1,21 @@
-import React from "react"
+import React,{Component} from "react"
+import store from "../../redux/store";
+import { URL, actionType, mainViewType } from "../../redux/config";
 
-function Profiletest({ user }) {
-  const { memailid, mpw, mnick } = user || {}
+class Profiletest extends Component {
+  render() {
   return (
     <>
       <h1>Profile</h1>
       <dt>Email</dt>
-      <dd>{memailid}</dd>
+      <dd>{store.getState().loginId}</dd>
       <dt>Password</dt>
-      <dd>{mpw}</dd>
+      <dd></dd>
       <dt>Name</dt>
-      <dd>{mnick}</dd>
+      <dd></dd>
     </>
   )
+}
 }
 
 export default Profiletest
