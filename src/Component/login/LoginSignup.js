@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import "./LoginSignup.css";
 import {isEmail,isPassword,isNick} from "./SignupCheck";
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 class LoginSignup extends Component{
@@ -237,4 +238,4 @@ class LoginSignup extends Component{
     }
 }
 
-export default LoginSignup;
+export default withRouter(LoginSignup);
