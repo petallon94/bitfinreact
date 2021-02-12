@@ -6,7 +6,7 @@ class Profiletest extends Component {
   render() {
   return (
     <>
-      <h1>Profile</h1>
+      <h1>프로필 변경</h1>
       <dt>Email</dt>
       <dd>{store.getState().loginId}</dd>
       <dt>Password</dt>

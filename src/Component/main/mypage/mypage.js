@@ -1,28 +1,32 @@
 import React,{Component} from 'react';
-import './mypage.css';
+import {NavLink,Route, Switch} from 'react-router-dom';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
-import MypageList from './mypage_list';
-import Button from '@material-ui/core/Button';
-
-
+import MyAllList from './MyList/MyAllList'
+import MyCnList from './MyList/MyCnList'
+import MyEtcList from './MyList/MyEtcList'
+import MyJapList from './MyList/MyJapList'
+import MyKorList from './MyList/MyKorList'
+import MyWesList from './MyList/MyWesList'
+import './mypage.css';
 
 class mypage extends Component{
     constructor(props){
         super(props);
+        console.log("Mypage 시작");
+        console.log(this.props.match.params.mnick);
+        console.log(this.props.match);
     }
     state = {
         mypageMember:[],
-        myReviewsCount:"",
-        myFollowsCount:""
+        mypageUrl:this.props.match.url
     }
 
     // 멤버 아이디,팔로워 구하기
     getMypageMember = () => {
-        let url = "http://localhost:9001/mypage/listMember";
+        let url = "http://localhost:9001/mypage/myInformation";
         axios.get(url,{
             params:{
-                mnum:1
+                mnick:this.props.match.params.mnick
             }
         })
         .then(respones => {
@@ -31,55 +35,16 @@ class mypage extends Component{
                 mypageMember:respones.data
             })
         }).catch(error => {
-            console.log("마이페이지 아이디 출력 : " + error);
+            console.log("마이페이지 프로필 출력 : " + error);
         })
 
     }
-    // 멤버 
-    getMyReviewsCount = () => {
-        let url = "http://localhost:9001/mypage/listCount";
-        axios.get(url,{
-            params:{
-                mnum:1
-            }
-        })
-        .then(respones => {
-            
-            this.setState({
-                myReviewsCount:respones.data
-            })
-        }).catch(error => {
-            console.log("리스트 카운트 에러 : " + error);
-        })
-
-    }
-
-    getFollowCount = () => {
-        let url = "http://localhost:9001/mypage/followCount";
-        axios.get(url,{
-            params:{
-                mnum:1
-            }
-        })
-        .then(respones => {
-            this.setState({
-                myFollowsCount:respones.data
-            })
-        }).catch(error => {
-            console.log("팔로우수 에러 : " + error);
-        })
-
-    }
-
-
-
-
 
     componentDidMount(){
         this.getMypageMember();
-        this.getMyReviewsCount();
-        this.getFollowCount();
     }
+
+
 
     render(){
         return(
@@ -92,11 +57,10 @@ class mypage extends Component{
                         <div className="profile_place">
                             <div className="profile_nameplace">
                                 <h1>{this.state.mypageMember.mnick}</h1>
-                                <Link to="/main"><Button variant="contained">프로필 편집</Button></Link>
                             </div>
                             <div className="profile_information">
-                                <div>게시물 : {this.state.myReviewsCount}</div>
-                                <div>팔로우 : {this.state.myFollowsCount}</div>
+                                <div>게시물 : {this.state.mypageMember.listCount}</div>
+                                <div>팔로우 : {this.state.mypageMember.follow}</div>
                                 <div>팔로워 : {this.state.mypageMember.follower}</div>
                             </div>
                             <div className="profile_introduce">
@@ -104,11 +68,27 @@ class mypage extends Component{
                             </div>
                         </div>
                     </div>
+                    <ul className="mypge_list_btn">
+                        <li><NavLink exact activeClassName="active_list_btn" to={this.props.match.url}>전체</NavLink></li>
+                        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/kor`} >한식</NavLink></li>
+                        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/cn`} >중식</NavLink></li>
+                        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/jap`} >일식</NavLink></li>
+                        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/wes`} >양식</NavLink></li>
+                        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/etc`} >기타</NavLink></li>
+                    </ul>
                 </div>
-                <MypageList/>
+                <Switch>
+                    <Route exact path={this.props.match.path} component={MyAllList}/>
+                    <Route exact path={`${this.props.match.path}/kor`} component={MyKorList}/>
+                    <Route exact path={`${this.props.match.path}/cn`} component={MyCnList}/>
+                    <Route exact path={`${this.props.match.path}/jap`} component={MyJapList}/>
+                    <Route exact path={`${this.props.match.path}/wes`} component={MyWesList}/>
+                    <Route exact path={`${this.props.match.path}/etc`} component={MyEtcList}/>
+                </Switch>
+            
             </div>
-        )
+        );
     }
-}
 
+}
 export default mypage;
