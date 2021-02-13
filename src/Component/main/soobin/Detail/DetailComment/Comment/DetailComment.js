@@ -13,6 +13,7 @@ class DetailComment extends Component {
         arnum: 1,
         acontent: "",
         amnick: store.getState().mnick,
+        acontentList: [],
     };
 }
     answerInsert=()=>{
@@ -30,6 +31,18 @@ class DetailComment extends Component {
         }).catch(err=>{
             console.log("추가시 오류남:"+err);
             
+        })
+    }
+
+    list=()=>{
+        let url="http://localhost:9001/answer/answerlist?arnum="+this.state.arnum;
+        axios.get(url)
+        .then(res=>{
+            this.setState({
+                acontentList: res.data
+            })
+        }).catch(err=>{
+            console.log("목록 오류:"+err)
         })
     }
 
@@ -53,6 +66,11 @@ class DetailComment extends Component {
     closeModal = () => {
         this.setState({ modalOpen: false })
     }
+
+    componentWillMount() {
+        this.list(); //처음 시작시 백엔트로부터 데이터 가져오기
+    }
+
     // Modal open,close
     render() {
         return (
@@ -62,6 +80,7 @@ class DetailComment extends Component {
                         <div className="new_comment">
                             <Input className="write_newComment" onChange={this.handleChange} onKeyUp={this.handleKeyEvent}
                             type="text"
+                            name="acontent"
                             placeholder="댓글달기..."
                             value={this.state.acontent}
                             size="50"
@@ -72,9 +91,14 @@ class DetailComment extends Component {
                         </div>
                     </div>
                     <div className="comment_wrapper">
-                        <AddComment>
-                            
-                        </AddComment>
+                    {this.state.acontentList.map(item =>
+                        <AddComment
+                        amnick={item.amnick}
+                        acontent={item.acontent}
+                        awriteday={item.awriteday}
+                        handleRemove={this.handleRemove}
+                        key={item.awriteday}>
+                        </AddComment>)}
                     </div>
                 </div>
             </div>
