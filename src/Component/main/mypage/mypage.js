@@ -1,32 +1,34 @@
 import React,{Component} from 'react';
 import {NavLink,Route, Switch} from 'react-router-dom';
 import axios from 'axios';
-import MyAllList from './MyList/MyAllList'
-import MyCnList from './MyList/MyCnList'
-import MyEtcList from './MyList/MyEtcList'
-import MyJapList from './MyList/MyJapList'
-import MyKorList from './MyList/MyKorList'
-import MyWesList from './MyList/MyWesList'
+import MyAllList from './MyList/MyAllList';
+import MyCnList from './MyList/MyCnList';
+import MyEtcList from './MyList/MyEtcList';
+import MyJapList from './MyList/MyJapList';
+import MyKorList from './MyList/MyKorList';
+import MyWesList from './MyList/MyWesList';
 import './mypage.css';
+import store from "../../../redux/store";
 
 class mypage extends Component{
     constructor(props){
         super(props);
         console.log("Mypage 시작");
         console.log(this.props.match.params.mnick);
-        console.log(this.props.match);
+        console.log(store.getState().mnum);
     }
     state = {
         mypageMember:[],
         mypageUrl:this.props.match.url
     }
 
-    // 멤버 아이디,팔로워 구하기
+    // 프로필 가져오기.
     getMypageMember = () => {
         let url = "http://localhost:9001/mypage/myInformation";
         axios.get(url,{
             params:{
-                mnick:this.props.match.params.mnick
+                mnick:this.props.match.params.mnick,
+                mynum:store.getState().mnum
             }
         })
         .then(respones => {
@@ -45,6 +47,31 @@ class mypage extends Component{
     }
 
 
+    //팔로워 추가
+    followbtn=()=>{
+        let url="";
+        if(this.state.mypageMember.following==0){
+            url="http://localhost:9001/mypage/addFollower"
+        }else{
+            url="http://localhost:9001/mypage/delFollwer"
+        }
+        axios.get(url,{
+            params:{
+                mnick:this.props.match.params.mnick,
+                mynum:store.getState().mnum
+            }
+        })
+        .then(respones => {
+            console.log(respones.data);
+            window.location.reload();
+        }).catch(error => {
+            console.log(" 팔로우 에러... : " + error);
+        })
+    }
+
+
+    //팔로워 삭제
+
 
     render(){
         return(
@@ -56,13 +83,19 @@ class mypage extends Component{
                         </div>
                         <div className="profile_place">
                             <div className="profile_nameplace">
-                                <h1>{this.state.mypageMember.mnick}</h1>
+                                <h1>{this.state.mypageMember.mnick}
+                                </h1>{store.getState().mnick===this.props.match.params.mnick?'내정보 바꾸기'
+                                :this.state.mypageMember.following==='0'?
+                                <button onClick={this.followbtn}>팔로우하기</button>
+                                :
+                                <button onClick={this.followbtn}>팔로우취소하기</button>
+                                }
                             </div>
                             <div className="profile_information">
                                 <div>게시물 : {this.state.mypageMember.listCount}</div>
                                 <div>팔로우 : {this.state.mypageMember.follow}</div>
                                 <div>팔로워 : {this.state.mypageMember.follower}</div>
-                                {}
+                                
                             </div>
                             <div className="profile_introduce">
                                 {this.state.mypageMember.mintro}
@@ -86,7 +119,7 @@ class mypage extends Component{
                     <Route exact path={`${this.props.match.path}/wes`} component={MyWesList}/>
                     <Route exact path={`${this.props.match.path}/etc`} component={MyEtcList}/>
                 </Switch>
-            
+                
             </div>
         );
     }
