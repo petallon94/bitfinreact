@@ -23,7 +23,6 @@ const DetailLike = () => (
                         <FaShareAlt />
                     </Badge>
                 </IconButton>
-                <input style={{position:'relative',top:'40px',left:'-135px',width:'55%',height:'20px'}} className="DetailLike-write" type="comment" placeholder='댓글달기'/>
             </div>
         </div>
     </div>

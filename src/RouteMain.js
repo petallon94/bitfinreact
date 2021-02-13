@@ -65,7 +65,7 @@ class RouteMain extends Component  {
                 <Route path="/main/mypage/:mnick" component={mypage}/>
             
                 <Route exact path="/main/modal" component={Follow}/>
-                <Route exact path="/main/detail" component={Detail}/>
+		<Route exact path="/main/detail/:rnum" component={Detail}/>
             </Switch>
             </div>
             
