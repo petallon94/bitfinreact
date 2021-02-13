@@ -8,6 +8,7 @@ import Detail from './Component/main/soobin/Detail/DetailPage'
 import {LoginMain,LoginSignup,Profiletest} from './Component/login'
 import store from "./redux/store";
 import {actionType} from "./redux/config";
+import {ReviewWrite} from './Component/main/soobin';
 
 class RouteMain extends Component  {
 
@@ -63,7 +64,7 @@ class RouteMain extends Component  {
                 <Route exact path ="/main/profile" component={Profiletest}/>
                 <Route exact path="/main" component={list}/>
                 <Route path="/main/mypage/:mnick" component={mypage}/>
-            
+                <Route exact path="/main/reviewwrite" component={ReviewWrite}/>
                 <Route exact path="/main/modal" component={Follow}/>
 		<Route exact path="/main/detail/:rnum" component={Detail}/>
             </Switch>
