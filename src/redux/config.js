@@ -1,4 +1,4 @@
-export const URL = "http://localhost:9001";
+export const URL = "http://localhost:9001/";
 export const actionType = {
     setMainView: "setMainView",
     SIGN_UP: "SIGN_UP",
