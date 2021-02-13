@@ -25,15 +25,15 @@ closeModal = () => {
     this.setState({ modalOpen: false })
 }
     render() {
-      const {userId,comment,idx,handleRemove} = this.props
+      const {amnick,acontent,awriteday,handleRemove} = this.props
       return (
         <div className="previous_comment">
           <div className="DetailComment-bar">
           <NavLink to={"/main/mypage"} className="DetailComment-profile">
             <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsLjZETkWOgURfHDtCVmB2ZRRCm7Hc6I_dHw&usqp=CAU'/>
           </NavLink>
-              <span className="add-comment-box">{userId}</span>
-              <span className="add-comment">{comment}</span>
+              <span className="add-comment-box">{amnick}</span>
+              <span className="add-comment">{acontent}</span>
               
             <div className="DetailComment-icons">
               <IconButton color="inherit">
@@ -56,7 +56,7 @@ closeModal = () => {
                 </IconButton> 
                 <IconButton color="inherit">
                   <Badge color="secondary">
-                    <FaTrashAlt id={idx}
+                    <FaTrashAlt id={awriteday}
                   className="comment_deletebutton"
                   onClick={handleRemove}/>
                     <span>삭제하기</span>

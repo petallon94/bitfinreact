@@ -58,14 +58,14 @@ class RouteMain extends Component  {
                 <Route path="/main" component={header}/>
             <Switch>
                 <Route exact path="/login" component={LoginMain}/>
-               <Route exact path="/login/signup" component={LoginSignup}/>
+                <Route exact path="/login/signup" component={LoginSignup}/>
                 
                 <Route exact path ="/main/profile" component={Profiletest}/>
                 <Route exact path="/main" component={list}/>
                 <Route path="/main/mypage/:mnick" component={mypage}/>
             
                 <Route exact path="/main/modal" component={Follow}/>
-		<Route exact path="/main/detail/:rnum" component={Detail}/>
+		        <Route exact path="/main/detail/:rnum" component={Detail}/>
             </Switch>
             </div>
             
