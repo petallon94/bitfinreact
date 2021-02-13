@@ -5,6 +5,7 @@ import DetailLikeContainer from './DetailLike/DetailLikeContainer';
 import DetailCommentContainer from './DetailComment/DetailCommentContainer';
 import './DetailPage.css';
 
+
 class DetailPage extends Component {
     render() {
         return (

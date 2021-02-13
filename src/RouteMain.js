@@ -30,7 +30,7 @@ function RouteMain()  {
                 <Route exact path="/main/mypage" component={mypage}/>
                 <Route exact path="/main/modal" component={Follow}/>
 
-                <Route exact path="/main/detail" component={Detail}/>
+                <Route exact path="/main/detail/:rnum" component={Detail}/>
                  <Switch>
                   <AuthRoute
                   authenticated={authenticated} path="/profile"

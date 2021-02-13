@@ -1,46 +1,30 @@
 .DetailComment {
-   
-}
-.DetailComment .DetailComment-bar {
-    width:100%;
-    height:100%;
-}
-.DetailComment .DetailComment-bar .DetailComment-box {
-    margin: 0 auto;
-    margin-left: 10px;
-    display: flex;
-    align-items: center;
-    height: 110px;
-}
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-profile > img{
-    width:50px;
-    height:50px;
-    border-radius:100%;
-}
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item {
-    position: relative;
-    display: flex;
-    align-items: center;
-    left: 20px;
+
 }
 
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-sub {
-    font-size: 1.2em;
+.DetailComment .DetailComment-bar {
+
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-day {
-    position: relative;
-    font-size: 0.7em;
-    top: 40px;
-    left: -45px;
+
+.DetailComment .DetailComment-bar .comment {
+
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-comment {
-    position: relative;
-    font-size: 0.7em;
+
+.DetailComment .DetailComment-bar .comment .new_comment {
+    border: 1px solid #eaeaea;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+.DetailComment .DetailComment-bar .comment .write_newComment {
+    width: 90%;
+}
+
+.DetailComment .DetailComment-bar .comment .upload_button {
+    width: 10%;
     font-weight: bold;
-    top: 40px;
-    left: -20px;
 }
-.DetailComment .DetailComment-bar .DetailComment-box .DetailComment-item .DetailComment-icons{
-    position: relative;
-    left: 860px;
+
+.DetailComment .DetailComment-bar .comment_wrapper {
+    padding: 1.2%;
 }
