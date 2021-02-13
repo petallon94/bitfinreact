@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
 import './mypage_list.css';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class ListPrepare extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ class ListPrepare extends Component {
                 mypageList:respones.data
             })
         }).catch(error => {
-            console.log("마이페이지 리스트 오류 : " + error);
+            console.log("리스트 오류 : " + error);
         })
     }
 
@@ -62,6 +63,8 @@ class ListPrepare extends Component {
                     <div>
                         {this.state.mypageList.hashtag}
                     </div>
+
+                    <Link to={`../detail/${this.props.rnum}`} >기타</Link>
                 </div>
             </div>
         );
