@@ -45,7 +45,7 @@ onLogin = () => {
         memailid :this.state.memailid,
         mpw : this.state.mpw
       }
-      let url = "http://localhost:9001//member/memCheck";       
+      let url = "http://localhost:9001/member/memCheck";       
             axios.post(url,data)
             .then(res=>{
              
@@ -54,7 +54,7 @@ onLogin = () => {
                   this.setLoginId(data.memailid);
                   console.log(res.data);   
                   //alert(store.getState().loginId+ "가 스토어에 저장된 아이디입니다");
-                  this.props.history.push("/profile");
+                  this.props.history.push("/main/profile");
               }
               else{
                   alert("아이디와 비밀번호가 맞지않습니다.");

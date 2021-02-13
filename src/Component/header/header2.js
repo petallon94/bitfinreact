@@ -203,13 +203,14 @@ export default function PrimarySearchAppBar() {
 
   return (
 
+    
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
           {/*타이틀 */}
           <NavLink exact to="/main" >
           <Typography className={classes.title} variant="h6" edge="start" noWrap >
-            호로록(Just do eat)          
+            호로록(Just do eat)           
           </Typography>
           </NavLink>  
           {/*검색 */}

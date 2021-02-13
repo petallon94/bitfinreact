@@ -55,9 +55,10 @@ class RouteMain extends Component  {
     render() {
         return (
             <div>
+                <Route exact path="/" component={LoginMain}/>
                 <Route path="/main" component={header}/>
             <Switch>
-                <Route exact path="/login" component={LoginMain}/>
+                
                <Route exact path="/login/signup" component={LoginSignup}/>
                 
                 <Route exact path ="/main/profile" component={Profiletest}/>
