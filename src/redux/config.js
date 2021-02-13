@@ -9,6 +9,8 @@ export const actionType = {
     LOGIN_FAILURE: "LOGIN_FAILURE",
     shareBoardUpdate: "shareBoardUpdate",
     setSearchResultDataList: "setSearchResultDataList",
+    Mnick: "Mnick",
+    Mnum: "Mnum",
 }
 
 export const mainViewType = {

@@ -21,13 +21,14 @@ class LoginMain extends Component{
         memailid : "",
         mpw : "",
         mnick : "",
+        mnum : "",
         follower : ""
     }
 
     //함수 선언
 }
 
-setLoginId = (loginId) => {
+setLoginId = (loginId,mnick,mnum) => {
   console.log("LoginPage setLoginId()");
   store.dispatch({
       type: actionType.LOG_IN,
@@ -36,12 +37,30 @@ setLoginId = (loginId) => {
       logged: true
   });
 }
-
+setMnick = (mnick) => {
+  console.log("LoginPage setMnick()");
+  store.dispatch({
+      type: actionType.Mnick,
+      // mainView: mainViewType.MainPage
+      mnick: mnick,
+      logged: true
+  });
+}
+setMnum = (mnum) => {
+  console.log("LoginPage setMnum()");
+  store.dispatch({
+      type: actionType.Mnum,
+      // mainView: mainViewType.MainPage
+      mnum: mnum,
+      logged: true
+  });
+}
 
 onLogin = () => {
     try {
       let data = {
-
+        mnick : this.state.mnum,
+        mnum : this.state.mnick,
         memailid :this.state.memailid,
         mpw : this.state.mpw
       }
@@ -52,6 +71,8 @@ onLogin = () => {
             
               if(res.data){
                   this.setLoginId(data.memailid);
+                  this.setMnick(res.data.mnick);
+                  this.setMnum(res.data.mnum);
                   console.log(res.data);   
                   //alert(store.getState().loginId+ "가 스토어에 저장된 아이디입니다");
                   this.props.history.push("/main/profile");

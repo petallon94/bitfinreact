@@ -60,13 +60,14 @@ class RouteMain extends Component  {
             <Switch>
                 
                <Route exact path="/login/signup" component={LoginSignup}/>
+
                 
                 <Route exact path ="/main/profile" component={Profiletest}/>
                 <Route exact path="/main" component={list}/>
                 <Route path="/main/mypage/:mnick" component={mypage}/>
             
                 <Route exact path="/main/modal" component={Follow}/>
-		<Route exact path="/main/detail/:rnum" component={Detail}/>
+		        <Route exact path="/main/detail/:rnum" component={Detail}/>
             </Switch>
             </div>
             

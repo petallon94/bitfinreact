@@ -21,6 +21,8 @@ const reducer = function (state, action) {
             memberData: [], // 회원목록
             id: '',
             loginId: '',
+            mnick: '',
+            mnum: '',
             googleOn: false,
             mainSearch: {
                 category: "all",
@@ -51,9 +53,21 @@ const reducer = function (state, action) {
             loginId: action.loginId,
         logged: action.logged
             });
+        } else if (action.type === actionType.Mnick) {
+            newState = Object.assign({}, state, {
+                mnick: action.mnick,
+            logged: action.logged
+                });
+            } else if (action.type === actionType.Mnum) {
+                newState = Object.assign({}, state, {
+                    mnum: action.mnum,
+                logged: action.logged
+                    });
         } else if (action.type === actionType.LOG_OUT) {
             newState = Object.assign({}, state, {
                 loginId: action.loginId,
+                mnum: action.mnum,
+                mnick: action.mnick,
                 logged: action.logged});
     } else if (action.type === actionType.LOGIN_REQUEST) {
         newState = Object.assign({}, state, {});
