@@ -55,8 +55,8 @@ class PostHeaderBox extends Component{
                   {/* 프로필이미지, 가게이름, 가게위치 */}
                   <Avatar className="mainlist__header_profphoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRshg1UlZU8R3dPaWcIAdVgnkrLSKgN-knvPg&usqp=CAU" alt="user"/>
                 </ListItemAvatar>
-                <ListItemText primary="리뷰넘버는?"></ListItemText>
-                <ListItemText  className="mainlist__header_id" primary="시골된장찌개(mnick)" secondary="강남 신논현역 근처" ></ListItemText>
+                <ListItemText className="mainlist__header_id"></ListItemText>
+                <ListItemText  className="mainlist__header_id" primary="{this.state.loadresinfo.resname}" secondary="강남 신논현역 근처" ></ListItemText>
               </ListItem>
            </div>
         )

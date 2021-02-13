@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import "./mainlist.css";
 import axios from 'axios';
 import Postcard from './postcard';
+import store from "../../../redux/store";
 
     
 class list extends Component{
@@ -14,19 +15,12 @@ class list extends Component{
       }
   }
 
-  //넘겨받은 mnum을 받아올때
-//   constructor({match})
-//   {
-//       super();
-//       this.mnum=match.params.mnum;
-//   }
-
   //스프링에서 목록 가져오기
   mainlist=()=>{
       let url="http://localhost:9001/review/list";
       axios.get(url,{
           params:{
-              mnum:2
+              mnum: store.getState().mnum
           }
       })
       .then(res=>{       
