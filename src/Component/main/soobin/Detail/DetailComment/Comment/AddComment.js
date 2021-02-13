@@ -34,7 +34,7 @@ closeModal = () => {
           </NavLink>
               <span className="add-comment-box">{amnick}</span>
               <span className="add-comment">{acontent}</span>
-              
+              <span className="add-awriteday">{awriteday}</span>
             <div className="DetailComment-icons">
               <IconButton color="inherit">
                 <Badge color="secondary" onClick={ this.openModal }>
@@ -48,21 +48,25 @@ closeModal = () => {
               </IconButton>                  
             </div>
             <Modal open={ this.state.modalOpen } close={ this.closeModal }>
-                <IconButton color="inherit">
-                  <Badge color="secondary">
-                    <FaWrench/>
-                    <span>수정하기</span>
-                  </Badge>
-                </IconButton> 
-                <IconButton color="inherit">
-                  <Badge color="secondary">
-                    <FaTrashAlt id={awriteday}
-                  className="comment_deletebutton"
-                  onClick={handleRemove}/>
-                    <span>삭제하기</span>
-                  </Badge>
-                </IconButton> 
-              </Modal>
+              <div className="comment-icon-bar">
+                <div className="comment-icon-box">
+                  <IconButton color="inherit" className="comment-update">
+                    <Badge color="secondary">
+                      <FaWrench/>
+                      <div style={{position:"relative",top:"-5px",marginLeft:"10px"}}>수정하기</div>
+                    </Badge>
+                  </IconButton> 
+                  <IconButton color="inherit" className="comment-delete">
+                    <Badge color="secondary">
+                      <FaTrashAlt id={awriteday}
+                    className="comment_deletebutton"
+                    onClick={handleRemove}/>
+                      <div style={{position:"relative",top:"-5px",marginLeft:"10px"}}>삭제하기</div>
+                    </Badge>
+                  </IconButton>
+                </div> 
+              </div>
+            </Modal>
           </div>
         </div>
       )

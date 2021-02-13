@@ -10,24 +10,25 @@ class DetailComment extends Component {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
     this.state = {
         modalOpen: false,
-        arnum: 1,
+        arnum: this.props.rnum,
         acontent: "",
         amnick: store.getState().mnick,
         acontentList: [],
     };
 }
     answerInsert=()=>{
+        this.setState({
+            acontentList: [...this.state.acontentList, {awriteday: Date.now(), amnick: store.getState().mnick, acontent: this.state.acontent}],
+            acontent: "",
+        })
         let data=this.state;
         let url='http://localhost:9001/answer/insert';
         axios.post(url,data)
             .then(res=>{
             //성공시
-            alert(res.data.mes);
+            //alert(res.data.mes);
             //입력값 지우기
-            this.setState({
-                arnum: "",
-                acontent: "",
-            })
+            
         }).catch(err=>{
             console.log("추가시 오류남:"+err);
             
@@ -67,7 +68,7 @@ class DetailComment extends Component {
         this.setState({ modalOpen: false })
     }
 
-    componentWillMount() {
+    componentDidMount() {
         this.list(); //처음 시작시 백엔트로부터 데이터 가져오기
     }
 
@@ -80,12 +81,11 @@ class DetailComment extends Component {
                         <div className="new_comment">
                             <Input className="write_newComment" onChange={this.handleChange} onKeyUp={this.handleKeyEvent}
                             type="text"
-                            name="acontent"
                             placeholder="댓글달기..."
                             value={this.state.acontent}
                             size="50"
                             />
-                            <Button className="upload_button" onClick={this.answerInsert.bind(this)}>
+                            <Button className="upload_button" onClick={this.answerInsert}>
                                 <b>게시</b>
                             </Button>
                         </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
 import './mypage_list.css';
 import axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Route, Link, NavLink } from 'react-router-dom';
 
 class ListPrepare extends Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class ListPrepare extends Component {
 
     render() {
         return (
-            <div className="mypage_listitem">
+            <NavLink to={"/main/detail/"+this.props.rnum} className="mypage_listitem">
                 
                 <ListItem>
                     <ListItemAvatar>
@@ -63,8 +63,9 @@ class ListPrepare extends Component {
                     <div>
                         {this.state.mypageList.hashtag}
                     </div>
+
                 </div>
-            </div>
+            </NavLink>
         );
     }
 }

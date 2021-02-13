@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import "./DetailCommentModal.css";
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import { FaTimes } from "react-icons/fa";
 
 class DetailCommentModal extends Component {
     render() {
@@ -11,7 +14,11 @@ class DetailCommentModal extends Component {
                     <section>
                         <header>
                             { header }
-                            <button className="close" onClick={close}> &times; </button>
+                            <IconButton color="inherit" className="close" onClick={close}>
+                                <Badge color="secondary">
+                                    <FaTimes/>
+                                </Badge>
+                            </IconButton>
                         </header>
                         <main>
                             {this.props.children}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import "./FollowModal.css";
 import FollowHeaderContainer from './top/FollowHeaderContainer';
+import IconButton from '@material-ui/core/IconButton';
+import Badge from '@material-ui/core/Badge';
+import { FaTimes } from "react-icons/fa";
 
 class followmodal extends Component {
     render() {
@@ -13,7 +16,11 @@ class followmodal extends Component {
                         <header>
                             { header }
                             <FollowHeaderContainer/>
-                            <button className="close" onClick={close}> &times; </button>
+                            <IconButton color="inherit" className="close" onClick={close}>
+                                <Badge color="secondary">
+                                    <FaTimes/>
+                                </Badge>
+                            </IconButton>
                         </header>
                         <main>
                             {this.props.children}

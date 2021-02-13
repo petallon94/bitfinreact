@@ -24,18 +24,13 @@
     overflow: hidden;
 }
 
-.modal > section > header button {
-    position: relative;
-    top: -53px;
-    left: 405px;
-    font-size: 60px;
-    font-weight: lighter;
-    text-align: center;
-    color: #999;
-    background-color: transparent;
+.modal > section > header .close {
+    position: absolute;
+    
 }
 .modal > section > header{
     height: 43px;
+    position: relative;
 }
 .modal > section > main {
     padding: 0;

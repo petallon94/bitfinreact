@@ -6,15 +6,24 @@ import DetailCommentContainer from './DetailComment/DetailCommentContainer';
 import './DetailPage.css';
 
 
-class DetailPage extends Component {
+class DetailPage extends Component { 
+    constructor(props){
+        super(props);
+        console.log(this.props.match.params.rnum);
+
+    }
     render() {
         return (
             <div className='dp-body'>
                 <div className='dp-box'>
                     <DetailPictureContainer/>
-                    <DetailMapSubContainer/>
+                    <DetailMapSubContainer
+                    rnum={this.props.match.params.rnum}
+                    />
                     <DetailLikeContainer/>
-                    <DetailCommentContainer/>
+                    <DetailCommentContainer
+                    rnum={this.props.match.params.rnum}
+                    />
                </div>
             </div>
         )

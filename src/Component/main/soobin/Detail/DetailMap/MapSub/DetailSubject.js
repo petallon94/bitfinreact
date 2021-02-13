@@ -9,9 +9,9 @@ import axios from 'axios';
 import { FaTrashAlt,FaWrench } from "react-icons/fa";
 
 class DetailSubject extends Component {
-    constructor(props,{match}) {
+    constructor(props) {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
-        this.rnum=1;
+        this.rnum=this.props.rnum;
     this.state = {
         modalOpen: false,
         selectData:''
