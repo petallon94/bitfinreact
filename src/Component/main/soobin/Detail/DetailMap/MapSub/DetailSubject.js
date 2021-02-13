@@ -5,22 +5,46 @@ import IconButton from '@material-ui/core/IconButton';
 import Badge from '@material-ui/core/Badge';
 import { BiDotsHorizontalRounded } from "react-icons/bi";
 import Modal from './SubMenu/DetailSubModal';
+import axios from 'axios';
+import { FaTrashAlt,FaWrench } from "react-icons/fa";
 
 class DetailSubject extends Component {
-    constructor(props) {
+    constructor(props,{match}) {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
+        this.rnum=1;
     this.state = {
         modalOpen: false,
+        selectData:''
     }
-};
+}
+//백엔드로부터 num 에 해당하는 데이터 가져오기
+    onSelectData=()=>{
+        let url='http://localhost:9001/review/detail?rnum='+this.rnum;
+        console.log(this.rnum);
+        axios.get(url)
+        .then(res=>{
+            //성공시 dto 리턴값을 받아 데이터에 넣어준다
+            this.setState({
+                selectData:res.data
+            })
+            console.log(res.data);
+        })
+    }
+
+    componentWillMount() {
+        this.onSelectData();
+    }
+
+    // Modal open,close
     openModal = () => {
         this.setState({ modalOpen: true })
     }
     closeModal = () => {
         this.setState({ modalOpen: false })
     }
-
+    
     render() {
+        const {selectData}=this.state;
         return (
             <div className="DetailSubject">
                 <div className="DetailSubject-bar">
@@ -32,18 +56,30 @@ class DetailSubject extends Component {
                             <div className='DetailSubject-nick'>Lee Sang Heon</div>
                             <div className='DetailSubject-address'>서울시 서초구 반포동</div>
                             <div className='DetailSubject-menu'>
-                                <IconButton color="inherit" onClick={ this.openModal }>
-                                    <Badge color="secondary">
+                                <IconButton color="inherit">
+                                    <Badge color="secondary" onClick={ this.openModal }>
                                         <BiDotsHorizontalRounded />
                                     </Badge>
                                 </IconButton>
                                 <Modal open={ this.state.modalOpen } close={ this.closeModal }>
-                                    <div>수정하기</div>
-                                    <div>삭제하기</div>
+                                    <IconButton color="inherit">
+                                    <Badge color="secondary">
+                                        <FaWrench/>
+                                        <span>수정하기</span>
+                                    </Badge>
+                                    </IconButton> 
+                                    <IconButton color="inherit">
+                                    <Badge color="secondary">
+                                        <FaTrashAlt
+                                    className="comment_deletebutton"
+                                    />
+                                        <span>삭제하기</span>
+                                    </Badge>
+                                    </IconButton> 
                                 </Modal>
                             </div>
                         </div>
-                        <div className="DetailSubject-sub">오늘은</div>
+                        <div className="DetailSubject-sub">{selectData.rcontent}</div>
                     </div>
                 </div>
             </div>

@@ -67,6 +67,16 @@ class RouteMain extends Component  {
                 <Route exact path="/main/modal" component={Follow}/>
                 <Route exact path="/main/detail" component={Detail}/>
             </Switch>
+
+                <Route exact path="/main/detail/:rnum" component={Detail}/>
+                 <Switch>
+                  <AuthRoute
+                  authenticated={authenticated} path="/profile"
+                  render={props => <Profiletest user={user} {...props} />}
+                  />
+         
+        </Switch>
+
             </div>
             
         );

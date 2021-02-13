@@ -1,54 +1,70 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
 import './DetailComment.css'
-import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge';
-import { BiDotsHorizontalRounded } from "react-icons/bi";
-import { FaHeart } from "react-icons/fa";
-import Modal from './CommentModal/DetailCommentModal';
+import AddComment from './AddComment'
+import { Input, Button } from '@material-ui/core';
 
 class DetailComment extends Component {
     constructor(props) {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
     this.state = {
         modalOpen: false,
+        acontent: "",
+        commentList: [{idx: 20201020, userId: "minnotming_", comment: "더 올려주세요ㅠ"}],
+    };
+}
+    handleChange = (e) => {
+        this.setState({
+            acontent: e.target.value
+        });
     }
-};
+
+    addComment = () => {
+        this.setState({
+            commentList: [...this.state.commentList, {idx: Date.now(), userId: "jjburi_", comment: this.state.acontent}],
+            acontent: ""
+        })
+    };
+
+    handleKeyEvent = (e) => {
+        if(e.key === "Enter") {
+            this.addComment();
+        }
+    }
+
+    // Modal open,close
     openModal = () => {
         this.setState({ modalOpen: true })
     }
     closeModal = () => {
         this.setState({ modalOpen: false })
     }
+    // Modal open,close
     render() {
         return (
             <div className="DetailComment">
-                <div className="DetailComment-bar">
-                    <div className="DetailComment-box">
-                        <NavLink to={"/main/mypage"} className="DetailComment-profile">
-                            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsLjZETkWOgURfHDtCVmB2ZRRCm7Hc6I_dHw&usqp=CAU'/>
-                        </NavLink>
-                        <div className="DetailComment-item">
-                            <div className="DetailComment-sub"><pre>오늘은</pre></div>
-                            <div className="DetailComment-day">2021-02-05</div>
-                            <div className="DetailComment-comment">답글달기</div>
-                            <div className="DetailComment-icons">
-                                <IconButton color="inherit">
-                                    <Badge color="secondary" onClick={ this.openModal }>
-                                        <BiDotsHorizontalRounded />
-                                    </Badge>
-                                </IconButton>
-                                <Modal open={ this.state.modalOpen } close={ this.closeModal }>
-                                    <div>하기</div>
-                                    <div>하기</div>
-                                </Modal>
-                                <IconButton color="inherit">
-                                    <Badge color="secondary">
-                                        <FaHeart />
-                                    </Badge>
-                                </IconButton>
-                            </div>
+               <div className="DetailComment-bar">
+                    <div className="comment">
+                        <div className="new_comment">
+                            <Input className="write_newComment" onChange={this.handleChange} onKeyUp={this.handleKeyEvent}
+                            type="text"
+                            placeholder="댓글달기..."
+                            value={this.state.content}
+                            size="50"
+                            />
+                            <Button className="upload_button" onClick={this.addComment}>
+                                <b>게시</b>
+                            </Button>
                         </div>
+                    </div>
+                    <div className="comment_wrapper">
+                        {this.state.commentList.map(item =>
+                        <AddComment
+                        userId={item.userId}
+                        comment={item.comment}
+                        idx={item.idx}
+                        handleRemove={this.handleRemove}
+                        key={item.idx}>
+                        </AddComment>)}
                     </div>
                 </div>
             </div>
