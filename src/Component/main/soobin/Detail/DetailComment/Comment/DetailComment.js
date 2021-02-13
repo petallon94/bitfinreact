@@ -10,8 +10,9 @@ class DetailComment extends Component {
         super(props); // React.Component의 생성자 메소드를 먼저 실행
     this.state = {
         modalOpen: false,
+        arnum: 1,
         acontent: "",
-        acontentList: [{awriteday: 20201020, amnick: "minnotming_", acontent: "더 올려주세요ㅠ",}],
+        amnick: store.getState().mnick,
     };
 }
     answerInsert=()=>{
@@ -23,7 +24,8 @@ class DetailComment extends Component {
             alert(res.data.mes);
             //입력값 지우기
             this.setState({
-                acontentList:[]
+                arnum: "",
+                acontent: "",
             })
         }).catch(err=>{
             console.log("추가시 오류남:"+err);
@@ -37,13 +39,7 @@ class DetailComment extends Component {
         });
     }
 
-    addComment = () => {
-        this.setState({
-            acontentList: [...this.state.acontentList, {arnum:this.rnum=1, awriteday: Date.now(), amnick: store.getState().mnick, acontent: this.state.acontent}],
-            acontent: ""
-        })
-    };
-
+    
     handleKeyEvent = (e) => {
         if(e.key === "Enter") {
             this.addComment();
@@ -70,20 +66,15 @@ class DetailComment extends Component {
                             value={this.state.acontent}
                             size="50"
                             />
-                            <Button className="upload_button" onClick={this.addComment}>
+                            <Button className="upload_button" onClick={this.answerInsert.bind(this)}>
                                 <b>게시</b>
                             </Button>
                         </div>
                     </div>
                     <div className="comment_wrapper">
-                        {this.state.acontentList.map(item =>
-                        <AddComment
-                        amnick={item.amnick}
-                        acontent={item.acontent}
-                        awriteday={item.awriteday}
-                        handleRemove={this.handleRemove}
-                        key={item.awriteday}>
-                        </AddComment>)}
+                        <AddComment>
+                            
+                        </AddComment>
                     </div>
                 </div>
             </div>

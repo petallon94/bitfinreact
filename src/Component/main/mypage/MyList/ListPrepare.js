@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { ListItem, ListItemText, ListItemAvatar, Avatar } from '@material-ui/core';
 import './mypage_list.css';
 import axios from 'axios';
+import { Route, Link } from 'react-router-dom';
 
 class ListPrepare extends Component {
     constructor(props) {
