@@ -210,26 +210,30 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
+          <NavLink exact to="/main/follow" >
             <IconButton aria-label="show 4 new mails" color="inherit">
               <Badge badgeContent={4} color="secondary">
                 <FaLaughWink />
               </Badge>
             </IconButton>
+            </NavLink>
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <FaHeart />
               </Badge>
             </IconButton>
             <IconButton aria-label="show 1 new notifications" color="inherit">
-            <NavLink exact to="/main/Chatting" >
+            <NavLink exact to="/main/chatting" >
               <Badge badgeContent={1} color="secondary">
                 <FaComments />
               </Badge>
               </NavLink>
             </IconButton>
+            <NavLink exact to="/login" >
             <IconButton aria-label="show 1 new notifications" color="inherit">
                 <FiLogIn />
             </IconButton>
+            </NavLink>
             <IconButton
               edge="end"
               aria-label="account of current user"

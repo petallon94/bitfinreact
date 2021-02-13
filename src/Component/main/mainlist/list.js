@@ -1,49 +1,10 @@
-import React,{Component, useState} from 'react';
-import Card from './card';
+import React,{Component} from 'react';
 import "./mainlist.css";
 import axios from 'axios';
+import Postcard from './postcard';
 
     
 class list extends Component{
-
-    
- 
-    // const [img, uploadimg] = useState(tileData)
-    // const [title, uploadtitle] = useState(tileData) 
-    // const [author,  uploadauthor] =  useState(tileData)
-    // const [date, setdate] =  useState(tileData)
-    // const [likes, addlikes] =  useState(tileData)
-    // conset [content, uploadcontent] =  useState(tileData)
-
-  // handleToggle = (id) => {
-  //   const { posting } = this.state;
-
-    // 파라미터로 받은 id 를 가지고 몇번째 아이템인지 찾습니다.
-    // const index = posting.findIndex(todo => todo.id === id);
-    // const selected = posting[index]; // 선택한 객체
-
-    // const newPosting = [...posting]; // 배열을 복사
-
-    // 기존의 값들을 복사하고, checked 값을 덮어쓰기
-
-    // newPosting[index] = { 
-    //   ...likes, 
-    //   checked: !likes.checked
-    // };
-
-
-    
-  //   this.setState({
-  //     posting: newPosting
-  //   });
-  // }
-
- 
-  //   const {input, posting } = this.state; 
-  //   const {
-  //     handleToggle
-
-  //   }   = this;
 
   constructor(props)
   {
@@ -51,15 +12,25 @@ class list extends Component{
       this.state={
           postData:[]
       }
-      //this.onAppSave=this.onAppSave.bind(this);
   }
+
+  //넘겨받은 mnum을 받아올때
+//   constructor({match})
+//   {
+//       super();
+//       this.mnum=match.params.mnum;
+//   }
 
   //스프링에서 목록 가져오기
   mainlist=()=>{
       let url="http://localhost:9001/review/list";
-      axios.get(url)
+      axios.get(url,{
+          params:{
+              mnum:2
+          }
+      })
       .then(res=>{       
-         console.log(res.data);     
+         //console.log(res.data);     
           this.setState({
               postData:res.data
           })
@@ -75,15 +46,13 @@ class list extends Component{
 
 render(){
   return (
-     <div className="mainlist">
-       <div className="mainlist__container">
+     <div className="mainlist">      
         {
         this.state.postData.map((row,idx)=>(
-        <Card row={row} key={idx} no={idx+1}
+        <Postcard row={row} key={idx} no={idx+1}
         history={this.props.history}/>
         ))
-        }
-        </div>
+        }    
       </div>
   )
 }
