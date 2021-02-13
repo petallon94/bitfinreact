@@ -2,6 +2,7 @@ import React,{Component} from 'react';
 import "./LoginSignup.css";
 import {isEmail,isPassword,isNick} from "./SignupCheck";
 import { withRouter } from 'react-router-dom';
+import logoh from "../../image/logo_h.png";
 import axios from 'axios';
 
 class LoginSignup extends Component{
@@ -197,7 +198,7 @@ class LoginSignup extends Component{
                
                <div className ="Signupsection">
 
-               <img src="http://placehold.it/170x50" />
+               <img src={logoh} />
                <h4>호로록만의 맛집정보를 보시려면 가입하세요</h4>
 
                <div className = "Signupform">

@@ -3,6 +3,8 @@ import "./LoginMain.css";
 import axios from 'axios';
 import {Route, Link, withRouter,Redirect } from "react-router-dom";
 import store from "../../redux/store";
+import logow from "../../image/logo_w.png";
+import mainp from "../../image/mainlogo.JPG";
 import { URL, actionType, mainViewType } from "../../redux/config";
 
 class LoginMain extends Component{
@@ -101,16 +103,16 @@ onLogin = () => {
             
 
             { width > 1200 && (<div className ="Loginpic">
-               <img className ="Loginpic" src="http://placehold.it/450x600" />
+               <img className ="Loginpic" src={mainp} />
                </div>)}
                
                
                <div className ="Loginsection">
                <div className = "Loginform">
-               <img src="http://placehold.it/170x50" />
+               <img src={logow} />
                <input className ="Loginemail"  name= "memailid" value={ this.state.memailid } onChange={ this.changeEvent.bind(this)} placeholder="이메일을 입력하세요"/>
                 <input className ="Loginpsw"   name="mpw" value={ this.state.mpw } onChange={ this.changeEvent.bind(this)}   placeholder="비밀번호를 입력하세요" type="password"/>
-                <button type="loginbtn"
+                <button className="Loginbtn"
                 onClick={this.onLogin.bind(this)}>
                     로그인
                 </button>
@@ -121,7 +123,7 @@ onLogin = () => {
                    
                 </div>
                 <div className ="Loginsignup">
-                   <a>계정이 없으신가요?   </a> <a href ='./signup'>가입하기</a>
+                   <a>계정이 없으신가요?   </a> <a href ='http://localhost:3000/login/signup'>가입하기</a>
                    
                 </div> 
                 </div>

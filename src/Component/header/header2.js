@@ -14,6 +14,9 @@ import {FiMoreVertical, FiLogIn} from "react-icons/fi";
 import { FcSelfie } from "react-icons/fc";
 import { NavLink } from 'react-router-dom';
 
+import store from "../../redux/store";
+import {actionType, mainViewType} from "../../redux/config";
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -92,6 +95,20 @@ export default function PrimarySearchAppBar() {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+
+
+ const setLogOut = () => {
+    console.log("Menu setLogOut()");
+    
+    store.dispatch({
+        type: actionType.LOG_IN,
+        // mainView: mainViewType.MainPage
+        loginId: '',
+        logged: false
+    });
+}
+
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -185,6 +202,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
+
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
@@ -222,12 +240,12 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton aria-label="show 1 new notifications" color="inherit">
             <NavLink exact to="/main/Chatting" >
-              <Badge badgeContent={1} color="secondary">
+              <Badge badgeContent={2} color="secondary">
                 <FaComments />
               </Badge>
               </NavLink>
             </IconButton>
-            <IconButton aria-label="show 1 new notifications" color="inherit">
+            <IconButton aria-label="show 1 new notifications" color="inherit" onClick={setLogOut}>
                 <FiLogIn />
             </IconButton>
             <IconButton
