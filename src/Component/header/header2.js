@@ -14,6 +14,9 @@ import {FiMoreVertical, FiLogIn} from "react-icons/fi";
 import { FcSelfie } from "react-icons/fc";
 import { NavLink } from 'react-router-dom';
 
+import store from "../../redux/store";
+import {actionType, mainViewType} from "../../redux/config";
+
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -92,6 +95,20 @@ export default function PrimarySearchAppBar() {
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
+
+
+ const setLogOut = () => {
+    console.log("Menu setLogOut()");
+    
+    store.dispatch({
+        type: actionType.LOG_IN,
+        // mainView: mainViewType.MainPage
+        loginId: '',
+        logged: false
+    });
+}
+
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -185,13 +202,15 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
+
+    
     <div className={classes.grow}>
       <AppBar position="static">
         <Toolbar>
           {/*타이틀 */}
           <NavLink exact to="/main" >
           <Typography className={classes.title} variant="h6" edge="start" noWrap >
-            호로록(Just do eat)          
+            호로록(Just do eat)           
           </Typography>
           </NavLink>  
           {/*검색 */}
@@ -223,14 +242,19 @@ export default function PrimarySearchAppBar() {
               </Badge>
             </IconButton>
             <IconButton aria-label="show 1 new notifications" color="inherit">
-            <NavLink exact to="/main/chatting" >
-              <Badge badgeContent={1} color="secondary">
+
+            <NavLink exact to="/main/Chatting" >
+              <Badge badgeContent={2} color="secondary">
+
                 <FaComments />
               </Badge>
               </NavLink>
             </IconButton>
+
             <NavLink exact to="/login" >
-            <IconButton aria-label="show 1 new notifications" color="inherit">
+
+            <IconButton aria-label="show 1 new notifications" color="inherit" onClick={setLogOut}>
+
                 <FiLogIn />
             </IconButton>
             </NavLink>

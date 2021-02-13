@@ -5,42 +5,74 @@ import Follow from './Component/main/follow/FollowBody';
 import {list} from './Component/main/mainlist'
 import {mypage} from './Component/main/mypage'
 import Detail from './Component/main/soobin/Detail/DetailPage'
-import {LoginMain,LoginSignup,AuthRoute,Profiletest} from './Component/login'
-import {SignIn} from './Component/login/Loginauth';
+import {LoginMain,LoginSignup,Profiletest} from './Component/login'
+import store from "./redux/store";
+import {actionType} from "./redux/config";
 
-function RouteMain()  {
+class RouteMain extends Component  {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            isStaticHeader: true,
+            mainview: "mainpage",
+            // footerPositionType: "",
+
+            logged: false,
+            onLogin: this.onLogin,
+            onLogout: this.onLogout
+
+        }
+
+    }
+
+
+
+    // Login 함수
+    onLogin = () => {
+        this.setState({
+            logged: true
+        });
+    }
+
+    // Logout 함수
+    onLogout = () => {
+        this.setState({
+            logged: false
+        });
+    }
+
+    componentDidMount() {
+        store.dispatch({
+            type:actionType.setMainView,
+        });
+    }
+
+
+
     
-
-  const [user, setUser] = useState(null);
-  const authenticated = user != null;  
-  const login = ({ memailid, mpw }) => setTimeout(setUser(SignIn({ memailid, mpw })),1000);
-  const logout = () => setUser(null);
-
-
+    render() {
         return (
             <div>
-                <Route exact path="/login"
-                 render={props => (
-                <LoginMain authenticated={authenticated} Login={login} {...props} />
-                 )}/>
-               <Route exact path="/login/signup" component={LoginSignup}/>
+                <Route exact path="/" component={LoginMain}/>
                 <Route path="/main" component={header}/>
+            <Switch>
+                
+               <Route exact path="/login/signup" component={LoginSignup}/>
+
+                
+                <Route exact path ="/main/profile" component={Profiletest}/>
                 <Route exact path="/main" component={list}/>
-                <Route path="/main/mypage/:nick" component={mypage}/>
-                <Route exact path="/main/mypage" component={mypage}/>
+                <Route path="/main/mypage/:mnick" component={mypage}/>
+            
                 <Route exact path="/main/modal" component={Follow}/>
-
-                <Route exact path="/main/detail" component={Detail}/>
-                 <Switch>
-                  <AuthRoute
-                  authenticated={authenticated} path="/profile"
-                  render={props => <Profiletest user={user} {...props} />}
-                  />
-         
-        </Switch>
-
+		        <Route exact path="/main/detail/:rnum" component={Detail}/>
+            </Switch>
             </div>
+            
         );
+    }
 }
 
 /* <Route exact path="/main/mypage" component={mypage}/> */

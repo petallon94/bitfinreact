@@ -2,7 +2,7 @@ import React,{Component} from 'react';
 import './mypage_list.css';
 import {Link} from 'react-router-dom';
 
-class MypagePrint extends Component{
+class ListPrint extends Component{
 
     render(){
         return(
@@ -38,4 +38,4 @@ class MypagePrint extends Component{
     }
 }
  
-export default MypagePrint;
+export default ListPrint;
