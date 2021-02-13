@@ -66,8 +66,8 @@ const reducer = function (state, action) {
         } else if (action.type === actionType.LOG_OUT) {
             newState = Object.assign({}, state, {
                 loginId: action.loginId,
-                mnum: action.mnum,
                 mnick: action.mnick,
+                mnum: action.mnum,
                 logged: action.logged});
     } else if (action.type === actionType.LOGIN_REQUEST) {
         newState = Object.assign({}, state, {});

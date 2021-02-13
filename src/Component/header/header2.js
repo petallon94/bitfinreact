@@ -102,12 +102,16 @@ export default function PrimarySearchAppBar() {
     console.log("Menu setLogOut()");
     
     store.dispatch({
-        type: actionType.LOG_IN,
+        type: actionType.LOG_OUT,
         // mainView: mainViewType.MainPage
         loginId: '',
+        mnick: '',
+        mnum: '',
         logged: false
     });
 }
+
+
 
 
   const handleMobileMenuClose = () => {
