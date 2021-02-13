@@ -8,6 +8,7 @@ import Detail from './Component/main/soobin/Detail/DetailPage'
 import {LoginMain,LoginSignup,Profiletest} from './Component/login'
 import store from "./redux/store";
 import {actionType} from "./redux/config";
+import {ChatApp} from "./Component/main/chatting";
 
 class RouteMain extends Component  {
 
@@ -65,6 +66,7 @@ class RouteMain extends Component  {
                 <Route path="/main/mypage/:mnick" component={mypage}/>
             
                 <Route exact path="/main/modal" component={Follow}/>
+                <Route exact path="/main/chat" component={ChatApp}/>
 		<Route exact path="/main/detail/:rnum" component={Detail}/>
             </Switch>
             </div>
