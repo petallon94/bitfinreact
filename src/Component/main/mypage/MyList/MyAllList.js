@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import ListPrint from './ListPrint';
+import ListPrepare from './ListPrepare';
 import axios from 'axios';
 
 class MyAllList extends Component{
@@ -9,21 +9,21 @@ class MyAllList extends Component{
         console.log(this.props.match);
     }
     state = {
-        mypageList:[]
+        mypageListInfo:[]
     }
 
     // 리스트 불러오기
-    getMypageList = () => {
+    getMypageListInfo = () => {
         let url = "http://localhost:9001/mypage/list";
         axios.get(url,{
             params:{
-                mnick:"보드테스트"
+                mnick:this.props.match.params.mnick
             }
         })
         .then(respones => {
             console.log(respones.data);
             this.setState({
-                mypageList:respones.data
+                mypageListInfo:respones.data
             })
         }).catch(error => {
             console.log("마이페이지 리스트 오류 : " + error);
@@ -31,15 +31,15 @@ class MyAllList extends Component{
     }
 
     componentDidMount(){
-        this.getMypageList();
+        this.getMypageListInfo();
     }
 
     render(){
         return(
         <div className="mypage_list_wrapper">
             {/* 리스트 내용 시작 */}
-            {this.state.mypageList ? this.state.mypageList.map(r => {
-                return <ListPrint rcontent={r.rcontent} key={r.rnum} mnum={r.rmnum} mnick={r.mnick} writeDay={r.rwriteday} picname={r.pickname} pirnum={r.pirnum} />
+            {this.state.mypageListInfo ? this.state.mypageListInfo.map(r => {
+                return <ListPrepare rnum={r.rnum} />
                 }) : '리스트가 엄서용..'}
         </div>
         )
