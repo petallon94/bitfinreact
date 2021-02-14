@@ -9,6 +9,8 @@ import MyKorList from './MyList/MyKorList';
 import MyWesList from './MyList/MyWesList';
 import './mypage.css';
 import store from "../../../redux/store";
+import Modal from '../follow/modal/FollowModal';
+import FollowListContainer from '../follow/modal/list/FollowListContainer'
 
 class mypage extends Component{
     constructor(props){
@@ -26,7 +28,10 @@ class mypage extends Component{
         follow:'',
         follower:'',
         following:'',
-        mypageUrl:this.props.match.url
+        mypageMember:[],
+        mypageUrl:this.props.match.url,
+        modalOpen: false,
+
     }
 
     // 프로필 가져오기.
@@ -88,6 +93,14 @@ class mypage extends Component{
         })
     }
 
+    // 팔로워,팔로잉 모달
+    openModal = () => {
+        this.setState({ modalOpen: true })
+    }
+    closeModal = () => {
+        this.setState({ modalOpen: false })
+    }
+
 
     //팔로워 삭제
 
@@ -116,9 +129,11 @@ class mypage extends Component{
                             </div>
 
                             <div className="profile_information">
+
                                 <div>게시물  <b> {this.state.listCount}</b></div>
-                                <div>팔로우  <b> {this.state.follow}</b></div>
-                                <div>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal }>팔로우  <b> {this.state.follow}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal }>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
+                                
                             </div>
 
                             <div className="profile_introduce">
@@ -147,6 +162,10 @@ class mypage extends Component{
                         <Route exact path={`${this.props.match.path}/etc`} component={MyEtcList}/>
                     </Switch>
                 </div>
+
+                <Modal open={ this.state.modalOpen } close={ this.closeModal }>
+                   <FollowListContainer/>
+                </Modal>
             </div>
         );
     }

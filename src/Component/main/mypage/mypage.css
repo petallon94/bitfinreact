@@ -97,6 +97,10 @@ div.hidden_place{
 }
 
 /* 자기소개 */
+.profile_information .profile_information_follow{
+    cursor: pointer;
+}
+
 .profile_introduce{
     margin-top:20px;
     overflow: hidden;
