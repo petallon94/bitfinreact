@@ -121,7 +121,7 @@ class ListPrepare extends Component {
                     <Link to={"/main/detail/"+this.props.rnum}>
                         <span>{this.state.mypageList.resname}</span>
                     </Link>
-                        <span onClick={this.likeBtn}>{this.state.likeme ? "❤"+this.state.likeCount+1 : "🖤"+this.state.likeCount }</span>
+                        <span onClick={this.likeBtn}>{this.state.likeme ? "❤"+(Number(this.state.likeCount)+1) : "🖤"+this.state.likeCount }</span>
                     </div>
                     <div className="listitem_btn writeday">
                         <span>{this.state.mypageList.rwriteday}</span>

@@ -93,7 +93,7 @@ class mypage extends Component{
         return(
             <div className="mypage_container">
                 <div className="hidden_place">
-                    {this.state.following? this.state.follower-1: this.state.follower}
+                    
                 </div>
                 <div className="profile_container">
                     <div className="profile_wrapper">
