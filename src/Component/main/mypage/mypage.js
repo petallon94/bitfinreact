@@ -18,7 +18,14 @@ class mypage extends Component{
         console.log(store.getState().mnum);
     }
     state = {
-        mypageMember:[],
+        mnum:'',
+        mnick:'',
+        mpic:'',
+        mintro:'',
+        listCount:'',
+        follow:'',
+        follower:'',
+        following:'',
         mypageUrl:this.props.match.url
     }
 
@@ -34,7 +41,14 @@ class mypage extends Component{
         .then(respones => {
             console.log(respones.data);
             this.setState({
-                mypageMember:respones.data
+                mnum:respones.data.mnum,
+                mnick:respones.data.mnick,
+                mpic:respones.data.mpic,
+                mintro:respones.data.mintro,
+                listCount:respones.data.listCount,
+                follow:respones.data.follow,
+                follower:respones.data.follower,
+                following:respones.data.following
             })
         }).catch(error => {
             console.log("마이페이지 프로필 출력 : " + error);
@@ -50,10 +64,16 @@ class mypage extends Component{
     //팔로워 추가
     followbtn=()=>{
         let url="";
-        if(this.state.mypageMember.following==0){
-            url="http://localhost:9001/mypage/addFollower"
-        }else{
+        if(this.state.following){
+            console.log(this.state.following)
             url="http://localhost:9001/mypage/delFollwer"
+            console.log("팔로워 삭제합니다.")
+            this.setState({following:!this.state.following})
+        }else{
+            console.log(this.state.following)
+            url="http://localhost:9001/mypage/addFollower"
+            console.log("팔로워 추가합니다.")
+            this.setState({following:!this.state.following})
         }
         axios.get(url,{
             params:{
@@ -63,7 +83,6 @@ class mypage extends Component{
         })
         .then(respones => {
             console.log(respones.data);
-            window.location.reload();
         }).catch(error => {
             console.log(" 팔로우 에러... : " + error);
         })
@@ -76,6 +95,7 @@ class mypage extends Component{
     render(){
         return(
             <div className="mypage_container">
+               {this.state.following? this.state.follower-1: this.state.follower}
                 <div className="profile_container">
                     <div className="profile_wrapper">
                         <div className="profile_image">
@@ -83,22 +103,22 @@ class mypage extends Component{
                         </div>
                         <div className="profile_place">
                             <div className="profile_nameplace">
-                                <h1>{this.state.mypageMember.mnick}
+                                <h1>{this.state.mnick}
                                 </h1>{store.getState().mnick===this.props.match.params.mnick?'내정보 바꾸기'
-                                :this.state.mypageMember.following==='0'?
-                                <button onClick={this.followbtn}>팔로우하기</button>
-                                :
+                                :this.state.following?
                                 <button onClick={this.followbtn}>팔로우취소하기</button>
+                                :
+                                <button onClick={this.followbtn}>팔로우하기</button>
                                 }
                             </div>
                             <div className="profile_information">
-                                <div>게시물 : {this.state.mypageMember.listCount}</div>
-                                <div>팔로우 : {this.state.mypageMember.follow}</div>
-                                <div>팔로워 : {this.state.mypageMember.follower}</div>
+                                <div>게시물 : {this.state.listCount}</div>
+                                <div>팔로우 : {this.state.follow}</div>
+                                <div>팔로워 : {this.state.following? this.state.follower+1: this.state.follower}</div>
                                 
                             </div>
                             <div className="profile_introduce">
-                                {this.state.mypageMember.mintro}
+                                {this.state.mintro}
                             </div>
                         </div>
                     </div>
