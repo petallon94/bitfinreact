@@ -9,6 +9,9 @@ import MyKorList from './MyList/MyKorList';
 import MyWesList from './MyList/MyWesList';
 import './mypage.css';
 import store from "../../../redux/store";
+import Modal from '../follow/modal/FollowModal';
+import FollowListContainer from '../follow/modal/list/FollowListContainer'
+import FollowingListContainer from '../follow/modal/list/FollowingListContainer'
 
 class mypage extends Component{
     constructor(props){
@@ -26,7 +29,11 @@ class mypage extends Component{
         follow:'',
         follower:'',
         following:'',
-        mypageUrl:this.props.match.url
+        modalOpen: false,
+        modalOpen2: false,
+        imgprofile:'http://localhost:9001/profilesave/',
+        mypageUrl:this.props.match.url,
+        
     }
 
     // 프로필 가져오기.
@@ -88,8 +95,33 @@ class mypage extends Component{
         })
     }
 
+    // 팔로워,팔로잉 모달
+    openModal = () => {
+        this.setState({ modalOpen: true })
+    }
+    closeModal = () => {
+        this.setState({ modalOpen: false })
+    }
+
+    // 팔로워,팔로잉 모달
+    openModal2 = () => {
+        this.setState({ modalOpen2: true })
+    }
+    closeModal2 = () => {
+        this.setState({ modalOpen2: false })
+    }
+
+    // 
+
+    // 더보기 클릭시 디테일페이지로 이동
+    goDetail = () =>{
+        this.props.history.push("/main/profile/");
+    }
+
+
 
     render(){
+        console.log(this.state.mpic);
         return(
             <div className="mypage_container">
                 <div className="hidden_place">
@@ -98,13 +130,14 @@ class mypage extends Component{
                 <div className="profile_container">
                     <div className="profile_wrapper">
                         <div className="profile_image">
-                            <img src="http://placehold.it/300" alt="프로필사진" />
+                            
+                            <img src={this.state.imgprofile+this.state.mpic} alt="" />
                         </div>
 
                         <div className="profile_place">
                             <div className="profile_nameplace">
                                 <h1>{this.state.mnick}</h1>
-                                {store.getState().mnick===this.props.match.params.mnick?<button className="profile_edit">프로필 편집</button>
+                                {store.getState().mnick===this.props.match.params.mnick?<button className="profile_edit" onClick={this.goDetail}>프로필 편집</button>
                                 :this.state.following?
                                 <button onClick={this.followbtn} className="followno_btn">팔로우취소하기</button>
                                 :
@@ -114,8 +147,8 @@ class mypage extends Component{
 
                             <div className="profile_information">
                                 <div>게시물  <b> {this.state.listCount}</b></div>
-                                <div>팔로우  <b> {this.state.follow}</b></div>
-                                <div>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal2 }>팔로우  <b> {this.state.follow}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal }>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
                             </div>
 
                             <div className="profile_introduce">
@@ -145,6 +178,16 @@ class mypage extends Component{
                 </div>
                 <div className="Mypage_list_footer">
                 </div>
+                <Modal open={ this.state.modalOpen } close={ this.closeModal }>
+                   <FollowListContainer
+                   mnum={this.state.mnum}
+                   />
+                </Modal>
+                <Modal open={ this.state.modalOpen2 } close={ this.closeModal2 }>
+                   <FollowingListContainer
+                   mnum={this.state.mnum}
+                   />
+                </Modal>
             </div>
         );
     }

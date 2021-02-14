@@ -93,7 +93,7 @@ likeBtn=()=>{
     }
     axios.get(url,{
         params:{
-            rnum:this.props.rnum,
+            rnum:this.props.row.rnum,
             mnum:store.getState().mnum
         }
     })
@@ -109,7 +109,7 @@ likeBtn=()=>{
     let url = "http://localhost:9001/mypage/selectLikere";
     axios.get(url,{
         params:{
-            rnum:this.props.rnum,
+            rnum:this.props.row.rnum,
             mnum:store.getState().mnum
         }
     })
@@ -124,13 +124,6 @@ likeBtn=()=>{
     })
 }
 
-
-
-
-
-changelikeButtonColor = () => {
-    this.setState({ changeLikeButtonColor: !this.state.changeLikeButtonColor });
-  };
 
 
     componentDidMount(){
@@ -177,7 +170,7 @@ changelikeButtonColor = () => {
                     <span>{this.state.datalist.rwriteday}</span>
                 </div>   
                 <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" color="textSecondary" className="listitem_contents" component="p">
                 {this.state.datalist.rcontent}
                 </Typography>
                 </CardContent>

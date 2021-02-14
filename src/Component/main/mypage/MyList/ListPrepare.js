@@ -15,6 +15,7 @@ class ListPrepare extends Component {
     state = {
         mypageList:[],
         imgurl:'http://localhost:9001/reviewsave/',
+        imgprofile:'http://localhost:9001/profilesave/',
         likeCount:'',
         likeme:''
     }
@@ -87,11 +88,6 @@ class ListPrepare extends Component {
 
 
 
-
-    changelikeButtonColor = () => {
-        this.setState({ changeLikeButtonColor: !this.state.changeLikeButtonColor });
-      };
-
     componentDidMount(){
          this.getMypageList();
          this.getLikeData();
@@ -104,7 +100,7 @@ class ListPrepare extends Component {
                 <div className="list_header">
                     <ListItem>
                         <ListItemAvatar onClick>
-                            <Avatar className="mainlist__header_profphoto" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRshg1UlZU8R3dPaWcIAdVgnkrLSKgN-knvPg&usqp=CAU" alt="user"/>
+                            <Avatar className="mainlist__header_profphoto" src={this.state.imgprofile+this.state.mypageList.mpic} alt="user"/>
                         </ListItemAvatar>
                         <ListItemText  className="mainlist__header_id" primary={this.state.mypageList.mnick} secondary={this.state.mypageList.resaddr}></ListItemText>
                     </ListItem>

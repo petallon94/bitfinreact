@@ -32,7 +32,7 @@ class DetailSubject extends Component {
                     <div className="DetailSubject-box">
                         <div className="DetailSubject-profile" onClick="/main/mypage">
                             <NavLink to={"/main/mypage"} className="DetailSubject-profile-picture">
-                                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsLjZETkWOgURfHDtCVmB2ZRRCm7Hc6I_dHw&usqp=CAU'/>
+                                <img src={'http://localhost:9001/profilesave/'+this.props.mpic}/>
                             </NavLink>
                             <div className='DetailSubject-nick'>{this.props.mnick}</div>
                             <div className='DetailSubject-address'>{this.props.resaddr}</div>
