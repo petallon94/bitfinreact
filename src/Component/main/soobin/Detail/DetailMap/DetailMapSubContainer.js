@@ -41,6 +41,8 @@ class DetailMapContainer extends Component {
                 mnick={selectData.mnick}
                 resaddr={selectData.resaddr}
                 rcontent={selectData.rcontent}
+                rmnum={selectData.rmnum}
+                picname={selectData.picname}
                 />
             </DetailMapSubWrap>
         )
