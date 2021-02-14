@@ -39,6 +39,7 @@ class DetailMapContainer extends Component {
                 <DetailSubject
                 rnum={this.props.rnum}
                 mnick={selectData.mnick}
+                mpic={selectData.mpic}
                 resaddr={selectData.resaddr}
                 rcontent={selectData.rcontent}
                 />

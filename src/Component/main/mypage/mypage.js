@@ -31,7 +31,9 @@ class mypage extends Component{
         following:'',
         modalOpen: false,
         modalOpen2: false,
-        mypageUrl:this.props.match.url
+        imgprofile:'http://localhost:9001/profilesave/',
+        mypageUrl:this.props.match.url,
+        
     }
 
     // 프로필 가져오기.
@@ -111,7 +113,7 @@ class mypage extends Component{
 
 
     render(){
-        //console.log(this.state.mnum);
+        console.log(this.state.mpic);
         return(
             <div className="mypage_container">
                 <div className="hidden_place">
