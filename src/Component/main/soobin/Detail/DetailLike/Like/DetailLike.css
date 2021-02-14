@@ -7,18 +7,15 @@
     height:100%;
 }
 .DetailLike .DetailLike-bar .DetailLike-box {
+    position: relative;
     margin: 0 auto;
     display: flex;
     align-items: center;
     height: 80px;
     margin-top: -15px;
 }
-.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-nick {
 
-}
-.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-sub {
-
-}
-.DetailLike .DetailLike-bar .DetailLike-box .DetailLike-day {
-
+.DetailLike .DetailLike-bar .DetailLike-box > span{
+    margin-left: 1%;
+    cursor: pointer;
 }
