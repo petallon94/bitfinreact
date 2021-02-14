@@ -50,3 +50,19 @@ cursor: pointer;
     padding-left: 30px;
     padding-right: 30px;
 }
+
+@media (max-width:1199px){
+    .mypage_list_wrapper{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .mypage_listitem{
+        width:90%;
+        margin:5% 5%;
+        
+    }
+
+}
