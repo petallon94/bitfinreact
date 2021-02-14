@@ -39,3 +39,8 @@
 .DetailSubject .DetailSubject-bar .DetailSubject-box .DetailSubject-sub {
     margin-top: 3%;
 }
+
+.updel_btn{
+    float: right;
+    z-index: 0;
+}

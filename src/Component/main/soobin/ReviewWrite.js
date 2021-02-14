@@ -7,7 +7,7 @@ import './ReviewWrite.css';
 import TextareaAutosize from 'react-autosize-textarea';
 import { FaTimes,FaImages,FaLocationArrow,FaMapMarkerAlt } from "react-icons/fa";
 import { IconButton } from "@material-ui/core";
-
+import { withRouter } from 'react-router-dom';
 
 
 class ReviewWrite extends Component{
@@ -130,7 +130,8 @@ class ReviewWrite extends Component{
     
     //db저장
     onInsertReview=()=>{
-        
+        //console.log(store.getState().mnick);
+        let mnick=store.getState().mnick;
         this.setState({
             
         });
@@ -157,6 +158,7 @@ class ReviewWrite extends Component{
                 picname:'',
                 hashtag:'',
             })
+            this.props.history.push("/main/mypage/"+mnick);
         }).catch(err=>{
             console.log("insert시오류:"+err);
         })
@@ -192,6 +194,7 @@ class ReviewWrite extends Component{
         }
 
         return(
+            
             <div className="review_con">
             <input type="text" style={{display:'none'}}
                 name="rmnum" value={this.state.rmnum}/>
@@ -299,4 +302,4 @@ class ReviewWrite extends Component{
     }
 }
 
-export default ReviewWrite;
+export default withRouter(ReviewWrite);
