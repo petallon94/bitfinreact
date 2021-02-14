@@ -131,7 +131,7 @@ const setLogOut = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
-    document.location.href = "http://localhost:3000/main/mypage/"
+    document.location.href = "http://localhost:3000/main/mypage/"+store.getState().mnick
     handleMobileMenuClose();
   };
 

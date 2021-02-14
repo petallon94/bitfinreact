@@ -88,11 +88,6 @@ class ListPrepare extends Component {
 
 
 
-
-    changelikeButtonColor = () => {
-        this.setState({ changeLikeButtonColor: !this.state.changeLikeButtonColor });
-      };
-
     componentDidMount(){
          this.getMypageList();
          this.getLikeData();

@@ -111,6 +111,14 @@ class mypage extends Component{
         this.setState({ modalOpen2: false })
     }
 
+    // 
+
+    // 더보기 클릭시 디테일페이지로 이동
+    goDetail = () =>{
+        this.props.history.push("/main/profile/");
+    }
+
+
 
     render(){
         console.log(this.state.mpic);
@@ -122,13 +130,14 @@ class mypage extends Component{
                 <div className="profile_container">
                     <div className="profile_wrapper">
                         <div className="profile_image">
-                            <img src="http://placehold.it/300" alt="프로필사진" />
+                            
+                            <img src={this.state.imgprofile+this.state.mpic} alt="" />
                         </div>
 
                         <div className="profile_place">
                             <div className="profile_nameplace">
                                 <h1>{this.state.mnick}</h1>
-                                {store.getState().mnick===this.props.match.params.mnick?<button className="profile_edit">프로필 편집</button>
+                                {store.getState().mnick===this.props.match.params.mnick?<button className="profile_edit" onClick={this.goDetail}>프로필 편집</button>
                                 :this.state.following?
                                 <button onClick={this.followbtn} className="followno_btn">팔로우취소하기</button>
                                 :
