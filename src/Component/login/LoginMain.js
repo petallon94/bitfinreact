@@ -56,6 +56,7 @@ setMnum = (mnum) => {
       logged: true
   });
 }
+
 setMpic = (mpic) => {
   console.log("LoginPage setMnum()");
   store.dispatch({
@@ -84,6 +85,7 @@ onLogin = () => {
                   this.setMnick(res.data.mnick);
                   this.setMnum(res.data.mnum);
                   this.setMpic(res.data.mpic);
+
                   console.log(res.data);   
                   //alert(store.getState().loginId+ "가 스토어에 저장된 아이디입니다");
                   this.props.history.push("/main/profile");

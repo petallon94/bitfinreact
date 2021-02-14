@@ -16,7 +16,9 @@ class DetailPage extends Component {
         return (
             <div className='dp-body'>
                 <div className='dp-box'>
-                    <DetailPictureContainer/>
+                    <DetailPictureContainer
+                    rnum={this.props.match.params.rnum}
+                    />
                     <DetailMapSubContainer
                     rnum={this.props.match.params.rnum}
                     />

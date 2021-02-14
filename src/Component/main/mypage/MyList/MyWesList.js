@@ -5,7 +5,7 @@ import axios from 'axios';
 class MyKorList extends Component{
     constructor(props){
         super(props); 
-        console.log("마이코리아리스트");
+        console.log("마이웨스트리스트");
         console.log(this.props.match.params.mnick);
     }
     state = {
@@ -39,7 +39,7 @@ class MyKorList extends Component{
         <div className="mypage_list_wrapper">
             {/* 리스트 내용 시작 */}
             {this.state.mypageListInfo ? this.state.mypageListInfo.map(r => {
-                return <ListPrepare rnum={r.rnum} />
+                return <ListPrepare rnum={r.rnum}  mnum={r.rmnum} />
                 }) : '리스트가 엄서용..'}
         </div>
         )

@@ -21,16 +21,17 @@ class list extends Component{
       axios.get(url,{
           params:{
               mnum: store.getState().mnum
-          }
-      })
+          }          
+      }) 
       .then(res=>{       
-         //console.log(res.data);     
+        //console.log(res.data);     
           this.setState({
               postData:res.data
           })
       }).catch(err=>{
-          console.log("목록 출력 에러"+err);
+          console.log("포스팅목록 출력 에러"+err);
       });
+      
   }
 
   componentDidMount() {
@@ -40,13 +41,15 @@ class list extends Component{
 
 render(){
   return (
-     <div className="mainlist">      
+      <div className="mainpage_container">
+     <div className="mainpage_list_wrapper">      
         {
         this.state.postData.map((row,idx)=>(
         <Postcard row={row} key={idx} no={idx+1}
         history={this.props.history}/>
         ))
         }    
+      </div>
       </div>
   )
 }

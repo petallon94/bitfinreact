@@ -1,9 +1,12 @@
 
-
+import store from "../../../redux/store";
 import axios from 'axios';
 import React,{Component} from 'react';
 //import DaumPostcode from "react-daum-postcode";
 import './ReviewWrite.css';
+import TextareaAutosize from 'react-autosize-textarea';
+import { FaTimes,FaImages,FaLocationArrow,FaMapMarkerAlt } from "react-icons/fa";
+import { IconButton } from "@material-ui/core";
 
 
 
@@ -13,7 +16,7 @@ class ReviewWrite extends Component{
         super(props);
        
         this.state={
-            rmnum:'',
+            rmnum:store.getState().mnum,
             rcontent:'',
             rcategory:'',
             rscore:'',
@@ -63,6 +66,15 @@ class ReviewWrite extends Component{
         })
     }
 
+    //사진삭제
+    handleDelete = () => {
+        //let url = "http://localhost:9001/review/delimg"
+                this.setState({
+                    picname:''
+                })
+            
+    };
+
     
     
     
@@ -92,49 +104,6 @@ class ReviewWrite extends Component{
                 resaddr: data.jibunAddress
               });
             }
-      
-            // // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
-            // if (data.userSelectedType === "R") {
-            //   // 법정동명이 있을 경우 추가한다. (법정리는 제외)
-            //   // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
-            //   if (data.bname !== "" && /[동|로|가]$/g.test(data.bname)) {
-            //     this.setState({
-            //       extraAddr: this.state.extraAddr + data.bname
-            //     });
-            //     // 건물명이 있고, 공동주택일 경우 추가한다.
-            //     if (data.buildingName !== "" && data.apartment === "Y") {
-            //       this.setState({
-            //         extraAddr:
-            //           this.state.extraAddr + this.state.extraAddr !== ""
-            //             ? ", " + data.buildingName
-            //             : data.buildingName
-            //       });
-            //     }
-            //     // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
-            //     if (this.state.extraAddr !== "") {
-            //       this.setState({
-            //         extraAddr: " (" + this.state.extraAddr + ")"
-            //       });
-            //     }
-            //     this.setState({
-            //       extraAddr: this.state.extraAddr
-            //     });
-            //     // 조합된 참고항목을 해당 필드에 넣는다.
-            //     // document.getElementById(
-            //     //   "extraAddress"
-            //     // ).value = this.state.extraAddr;
-            //   } else {
-            //     // document.getElementById("extraAddress").value = "";
-            //     this.setState({
-            //       extraAddr: ""
-            //     });
-            //   }
-      
-            //   this.setState({
-            //     postcode: " [" + data.zonecode + "]",
-            //     addr: this.state.addr
-            //   });
-            // }
           }
         }).open();
       };//주소검색끝
@@ -179,7 +148,7 @@ class ReviewWrite extends Component{
             
             alert("insert");
             this.setState({
-                rmnum:'',
+                rmnum:store.getState().mnum,
                 rcontent:'',
                 rcategory:'',
                 rscore:'',
@@ -211,9 +180,23 @@ class ReviewWrite extends Component{
 
         let url="http://localhost:9001/reviewsave/"
 
+        let img_preview=null;
+        let x_sign=null;
+        if(this.state.picname!==''){
+            img_preview=<img className="img_preview" src={url+this.state.picname}/>
+            x_sign=<IconButton className="x_sign"
+                        onClick={this.handleDelete.bind(this)}
+                    >
+                        <FaTimes/>
+                    </IconButton>
+        }
+
         return(
-            <div>
+            <div className="review_con">
+            <input type="text" style={{display:'none'}}
+                name="rmnum" value={this.state.rmnum}/>
                 <div>
+
                 <div className="main_insert">
                     
                     <div className="insert_start">
@@ -226,90 +209,68 @@ class ReviewWrite extends Component{
                             <img src={url+this.state.picname} alt="없음"
                             style={{width:'100px'}}
                             />
+
                         </div>
-                        <div className="insert_detail2">
-                            <select onChange={this.selectRscore}>
-                                <option value="">별점</option>
-                                <option value="5">5</option>
-                                <option value="4">4</option>
-                                <option value="3">3</option>
-                                <option value="2">2</option>
-                                <option value="1">1</option>
-                            </select>
-                            <input type="text" name="rscore"
-                                value={this.state.rscore}
+
+                        <div className="content_form">
+                            <TextareaAutosize
+                                name="rcontent"
+                                className="board_content"
+                                onChange={this.handleChange}
+                                value={this.state.rcontent}
+                                minRows={3}
+                                type="text"
+                                placeholder="호로록!! 해주세요"
                                 onChange={this.changeEvent.bind(this)}
-                                />
-                        </div>
-                        <div className="insert_detail3">
-                            <select onChange={this.selectRcategory}>
-                                <option value="">카테고리</option>
-                                <option value="한식">한식</option>
-                                <option value="중식">중식</option>
-                                <option value="일식">일식</option>
-                                <option value="양식">양식</option>
-                                <option value="기타">기타</option>
-                            </select>
-                            <input type="text" name="rcategory"
-                                value={this.state.rcategory}
-                                onChange={this.changeEvent.bind(this)}
-                                />
-                        </div>
-                        <div id="preview-container">
+                            /> 
+                            <br/>
                             
-                            {/* {imgPreview} */}
-                        </div>
-                        <div className="insert_detail5">
-                            <div style={{float:'left'}}></div>
-                            <textarea className="content" placeholder="내용" name="rcontent"
-                            value={this.state.rcontent} 
-                            onChange={this.changeEvent.bind(this)}/>
-                        </div>
-                        {/* <div className="insert_detail6">해시태그
-                            <input type="text"
-                             value={this.state.hashtag}
-                            name="hashtag" 
-                            //id="test"
-                            onChange={this.changeEvent.bind(this)}
-                            />
-                        </div> */}
-
-                        <div className="insert_detail7">지도
-                            rmnum:<input type="text" name="rmnum"
-                                    value={this.state.rmnum}
-                                    onChange={this.changeEvent.bind(this)}
-                                    />
                         </div>
 
-
-                        
-
-
+                        <div className="image_preview_con">          
+                            {img_preview}{x_sign}
+                        </div>
+                        <hr className="line"/>
                         <div>
-                            <input placeholder="가게이름"
-                            value={this.state.resname}
-                            name="resname"
-                            onChange={this.changeEvent.bind(this)}
-                            />
-                            &nbsp;
-                            <input placeholder="주소"
-                            value={this.state.resaddr}
-                            name="resaddr"
-                            onChange={this.changeEvent.bind(this)}
-                            />
-                           
-
-
-                        <button onClick={this.ReviewAddr}>검색</button>
-
-
+                            <div className="photo_btn">
+                                <input style={{display:'none'}} id="input_file_btn"
+                                    name = "photo" type="file" 
+                                    onChange={this.imageUpload.bind(this)}
+                                    required
+                                />
+                                <label htmlFor="input_file_btn">
+                                    <IconButton variant="raised" component="span">
+                                        <FaImages/>
+                                    </IconButton>
+                                </label>
+                            </div>
+                            <div className="addr_btn">
+                                <IconButton onClick={this.ReviewAddr}>
+                                    <FaMapMarkerAlt/>
+                                </IconButton>
+                            </div>
+                            <div className="insert_resname">
+                                <input placeholder="가게이름"
+                                    value={this.state.resname}
+                                    name="resname"
+                                    onChange={this.changeEvent.bind(this)}
+                                />
+                            </div>
+                            <div className="insert_resaddr">
+                                <input placeholder="가게주소"
+                                    value={this.state.resaddr}
+                                    name="resaddr"
+                                    onChange={this.changeEvent.bind(this)}
+                                />
+                            </div>
+                            <div className="insert_btn">
+                                <IconButton onClick={this.onInsertReview.bind(this)}>
+                                    <FaLocationArrow/>
+                                </IconButton>
+                            </div>
                         </div>
+                    
                     </div>
-                </div>
-                <div  className="insertbtn">
-                <button className="insert_btn"
-                onClick={this.onInsertReview.bind(this)}>추가</button>
-                </div>
                 </div>
             </div>
 
