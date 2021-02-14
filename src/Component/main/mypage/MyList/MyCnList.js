@@ -39,7 +39,7 @@ class MyKorList extends Component{
         <div className="mypage_list_wrapper">
             {/* 리스트 내용 시작 */}
             {this.state.mypageListInfo ? this.state.mypageListInfo.map(r => {
-                return <ListPrepare rnum={r.rnum} />
+                return <ListPrepare rnum={r.rnum}  mnum={r.rmnum} />
                 }) : '리스트가 엄서용..'}
         </div>
         )
