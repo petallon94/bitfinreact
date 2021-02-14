@@ -5,6 +5,7 @@ import propic from "../../image/unprofile.jpg";
 import {isPassword} from "./SignupCheck";
 import axios from 'axios';
 import { withRouter,Link } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 class Profilepro extends Component {
 
@@ -93,28 +94,31 @@ class Profilepro extends Component {
 
   
   render() {
+
+    let url="http://localhost:9001/profilesave/"
+    
   return (
     <>    
     <div className = "profilenn">
-      <h3 style={{marginBottom:'30px'}}>비밀번호 수정</h3> 
+      <h4 style={{marginBottom:'30px'}}>비밀번호 수정</h4> 
       <div className="profileTop">
         
-        <img className ="profileimg" src = {propic}></img>
+        <img className ="profileimg" src={url+store.getState().mpic} alt="없음"style={{width:'100px'}}></img>
         <div className = "profileName">
           <h3>{store.getState().loginId}</h3>
         </div>
       </div>
       <div className="pwdBox">
         <dt><p>이전 비밀번호</p>
-            <input name ="mpcc" placeholder="비밀 번호" type = "password" ></input>
+            <input name ="mpcc" style={{width : '400px'}} placeholder="비밀 번호" type = "password" ></input>
         </dt>
       
         <dt><p>새 비밀번호 </p>
-          <input name ="mpw" onChange={e=>this.createPsw(e)} placeholder="비밀 번호" type = "password" ></input>
+          <input name ="mpw" style={{width : '400px'}} onChange={e=>this.createPsw(e)} placeholder="비밀 번호" type = "password" ></input>
         </dt>
       
         <dt><p>새 비밀번호 확인</p> 
-          <input name ="mpwcc" onChange={e => this.repeatPassword(e)} placeholder="비밀 번호 확인" type="password"/>
+          <input name ="mpwcc" style={{width : '400px'}} onChange={e => this.repeatPassword(e)} placeholder="비밀 번호 확인" type="password"/>
         </dt>
 
       </div>
@@ -126,7 +130,7 @@ class Profilepro extends Component {
         ) : (<span style={{ color: "red" }}> 비밀번호가 일치하지 않습니다.</span>)) : null} <br></br>
                    
       <Link exact to="/" >
-      <button className ="Signupbtn" onClick = {this.pswUpdate.bind(this)} >비밀번호 갱신</button>
+      <Button className="cmbtn" variant="outlined" color="secondary" onClick = {this.pswUpdate.bind(this)} >비밀번호 갱신</Button>
       </Link>
     </div>
     </>

@@ -154,7 +154,7 @@ createmnick=(e)=>{
     
       <hr></hr>
       <div className="cmNN">
-      <b>아이디</b>
+      <b>닉네임</b>
       <input className="changeNick" name ="mnick" onChange={e=>this.createmnick(e)} value ={store.getState().mnick}></input> <br></br>
       <b>소개글</b>
       <textarea className="changeintro" name ="mintro" onChange={e=>this.createmintro(e)} > </textarea>
