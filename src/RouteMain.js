@@ -71,8 +71,6 @@ class RouteMain extends Component  {
                 <Route exact path="/main" component={list}/>
                 <Route path="/main/mypage/:mnick" component={mypage}/>
                 <Route exact path="/main/reviewwrite" component={ReviewWrite}/>
-                <Route exact path="/main/modal" component={Follow}/>
-
                 <Route exact path="/main/chat" component={ChatApp}/>
 		        <Route exact path="/main/detail/:rnum" component={Detail}/>
 

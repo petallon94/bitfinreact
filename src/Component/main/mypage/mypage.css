@@ -72,6 +72,11 @@ body{
 .profile_information div{
     margin-right:30px;
 }
+
+.profile_information .profile_information_follow{
+    cursor: pointer;
+}
+
 .profile_introduce{
     overflow: hidden;
     text-overflow: ellipsis;
