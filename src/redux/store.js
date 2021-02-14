@@ -51,6 +51,9 @@ const reducer = function (state, action) {
     } else if (action.type === actionType.LOG_IN) {
         newState = Object.assign({}, state, {
             loginId: action.loginId,
+            mnick: action.mnick,
+            mpw: action.mpw,
+            mpic: action.mpic,
         logged: action.logged
             });
         } else if (action.type === actionType.Mnick) {
@@ -63,6 +66,11 @@ const reducer = function (state, action) {
                     mnum: action.mnum,
                 logged: action.logged
                     });
+            }else if (action.type === actionType.Mpic) {
+                        newState = Object.assign({}, state, {
+                            mpic: action.mpic,
+                        logged: action.logged
+                            });
         } else if (action.type === actionType.LOG_OUT) {
             newState = Object.assign({}, state, {
                 loginId: action.loginId,

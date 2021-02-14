@@ -21,6 +21,8 @@ class Profiletest extends Component {
       <ul className="list_btn">
        <li><NavLink exact activeClassName="active_list_btn" to={this.props.match.url}>프로필 수정</NavLink></li>
        <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/pass`} >비밀번호 수정</NavLink></li>
+       <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/pass`} >개인정보 약관</NavLink></li>
+       <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/pass`} >커뮤니티 가이드라인</NavLink></li>
       </ul>
 
     </div>

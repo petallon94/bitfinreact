@@ -1,3 +1,7 @@
+.body{
+    background-color: #333;
+}
+
 @media screen and (min-width : 1200px){
 
     .Loginmm{
@@ -11,7 +15,7 @@
     
     .LoginPic{
         
-        border : 1px solid black;
+        
         width : 450px;
         height : 600px;
     }
@@ -21,12 +25,16 @@
         margin-left : 30px;
         width : 450px;
         height : 600px;
+        padding : 10px;
+        border: 1px solid gray;
+        box-shadow: 0px 5px 10px 0px gray;
+        background-color: #fcfcfc;
 
     }
 
     .LoginForm{
-        padding : 15px;
-        border : 1px solid black;
+        padding : 20px;
+        border : 1px solid #333;
         
     }
 
@@ -45,8 +53,8 @@
     .Loginbtn{
 
         margin-top: 10px;
-
-        width : 100%;
+        background-color: white;
+        width : 70%;
         height : 50px;
     }
 
@@ -60,14 +68,18 @@
 
     .Loginsignup{
 
-        margin-top : 60px;
+        margin-top : 40px;
         height : 100px;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        border :  3px solid black;
+        border :  1px solid #333;
         
+    }
+    .facefake{
+        margin-top : 20px;
+        max-width : 300px;
     }
 
 
@@ -94,15 +106,16 @@
         margin-left : 30px;
         width : 450px;
         height : 600px;
-        border : 2px solid black;
-        padding : 10px 20px 10px 20px;
+        padding : 10px;
+        border: 1px solid gray;
+        box-shadow: 0px 5px 10px 0px gray;
+        background-color: #fcfcfc;
 
     }
 
     .LoginForm{
-        padding : 15px;
-        
-        
+        padding : 20px;
+        border : 1px solid #333;
     }
 
     .Loginemail{
@@ -120,8 +133,8 @@
     .Loginbtn{
 
         margin-top: 10px;
-
-        width : 100%;
+        background-color: white;
+        width : 70%;
         height : 50px;
     }
 
@@ -135,14 +148,19 @@
 
     .Loginsignup{
 
-        margin-top : 60px;
+        margin-top : 40px;
         height : 100px;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        border :  3px solid black;
+        border :  1px solid #333;
         
+    }
+
+    .facefake{
+        margin-top : 20px;
+        max-width : 300px;
     }
 
 
@@ -172,13 +190,16 @@
         margin-left : 30px;
         width : 450px;
         height : 600px;
+        padding : 10px;
+        border: 1px solid gray;
+        box-shadow: 0px 5px 10px 0px gray;
+        background-color: #fcfcfc;
 
     }
 
     .LoginForm{
-        padding : 15px;
-        border : 1px solid black;
-        
+        padding : 10px;
+        border : 1px solid #333;
     }
 
     .Loginemail{
@@ -196,8 +217,8 @@
     .Loginbtn{
 
         margin-top: 10px;
-
-        width : 100%;
+        background-color: white;
+        width : 70%;
         height : 50px;
     }
 
@@ -212,17 +233,20 @@
 
     .Loginsignup{
 
-        margin-top : 60px;
+        margin-top : 40px;
         height : 100px;
         text-align: center;
         display: flex;
         justify-content: center;
         align-items: center;
-        border :  3px solid black;
+        border :  1px solid #333;
         
     }
 
-
+    .facefake{
+        margin-top : 20px;
+        max-width : 300px;
+    }
 
 }
 

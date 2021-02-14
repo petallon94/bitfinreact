@@ -39,3 +39,8 @@
     border: 1px solid gray;
     padding-left : 10px;
 }
+
+.profile_preview{
+
+    max-width : 200px;
+}

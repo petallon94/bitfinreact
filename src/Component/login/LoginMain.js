@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Route, Link, withRouter,Redirect } from "react-router-dom";
 import store from "../../redux/store";
 import logow from "../../image/logo_w.png";
+import facef from "../../image/facefake.png";
 import mainp from "../../image/mainlogo.JPG";
 import { URL, actionType, mainViewType } from "../../redux/config";
 
@@ -21,13 +22,14 @@ class LoginMain extends Component{
         memailid : "",
         mpw : "",
         mnick : "",
+        mnum : "",
         follower : ""
     }
 
     //함수 선언
 }
 
-setLoginId = (loginId) => {
+setLoginId = (loginId,mnick,mnum) => {
   console.log("LoginPage setLoginId()");
   store.dispatch({
       type: actionType.LOG_IN,
@@ -36,12 +38,39 @@ setLoginId = (loginId) => {
       logged: true
   });
 }
-
+setMnick = (mnick) => {
+  console.log("LoginPage setMnick()");
+  store.dispatch({
+      type: actionType.Mnick,
+      // mainView: mainViewType.MainPage
+      mnick: mnick,
+      logged: true
+  });
+}
+setMnum = (mnum) => {
+  console.log("LoginPage setMnum()");
+  store.dispatch({
+      type: actionType.Mnum,
+      // mainView: mainViewType.MainPage
+      mnum: mnum,
+      logged: true
+  });
+}
+setMpic = (mpic) => {
+  console.log("LoginPage setMnum()");
+  store.dispatch({
+      type: actionType.Mpic,
+      // mainView: mainViewType.MainPage
+      mpic: mpic,
+      logged: true
+  });
+}
 
 onLogin = () => {
     try {
       let data = {
-
+        mnick : this.state.mnum,
+        mnum : this.state.mnick,
         memailid :this.state.memailid,
         mpw : this.state.mpw
       }
@@ -52,6 +81,9 @@ onLogin = () => {
             
               if(res.data){
                   this.setLoginId(data.memailid);
+                  this.setMnick(res.data.mnick);
+                  this.setMnum(res.data.mnum);
+                  this.setMpic(res.data.mpic);
                   console.log(res.data);   
                   //alert(store.getState().loginId+ "가 스토어에 저장된 아이디입니다");
                   this.props.history.push("/main/profile");
@@ -119,8 +151,8 @@ onLogin = () => {
 
                </div>
                <div className ="Loginbot">
-                   <a>----- 현재 width : {width} -----</a>
-                   
+                   <a>----- 또는 -----</a><br></br>
+                   <img className="facefake" src={facef} />
                 </div>
                 <div className ="Loginsignup">
                    <a>계정이 없으신가요?   </a> <a href ='http://localhost:3000/login/signup'>가입하기</a>

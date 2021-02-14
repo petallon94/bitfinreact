@@ -221,7 +221,6 @@ class ReviewWrite extends Component{
                             <span id="addfile" style={{cursor:'pointer'}}>추가</span>
                             <input type="file" 
                                 onChange={this.imageUpload.bind(this)}
-                                
                                />
                             <p className="file_check">미리보기</p>
                             <img src={url+this.state.picname} alt="없음"

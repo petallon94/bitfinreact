@@ -202,7 +202,7 @@ class LoginSignup extends Component{
                <div className ="Signupsection">
 
                <img src={logoh} />
-               <h4>호로록만의 맛집정보를 보시려면 가입하세요</h4>
+               <h5>호로록만의 맛집정보를 보시려면 가입하세요</h5>
 
                <div className = "Signupform">
                <input className ="Signupemail" name ="memailid" onChange={e => this.createEmail(e)} placeholder="이메일 주소"/>
@@ -224,14 +224,14 @@ class LoginSignup extends Component{
                 ) : (<span style={{ color: "red" }}> 비밀번호가 일치하지 않습니다.</span>)) : null} <br></br>
                    
                 {this.state.isMatchPassword &&this.state.isValidEmail&& this.state.isValidNick&& this.state.isValidPsw ? (<button className ="Signupbtn" onClick ={this.memInsert.bind(this)} >가입</button>)
-                :(<button className ="Signupbtn" onClick ={this.memalert.bind(this)} >조건 다 만족 후 가입</button>)}
+                :(<button className ="Signupbtn" onClick ={this.memalert.bind(this)} >조건 다 만족 후 가입</button>)} <br></br>
                    
-                   <a>가입하면  호로록의 약관, 데이터 정책, 및 쿠키정책에 동의하게 됩니다.</a>
+                   <a>가입하면  호로록의 약관, 데이터 정책,<br></br> 및 쿠키정책에 동의하게 됩니다.</a>
 
                </div>
 
                 <div className ="Signinbtn">
-                   <a>계정이 있으신가요?   </a> <a href ='./'>로그인하기</a>
+                   <a>계정이 있으신가요?   </a> <a href ='././'>로그인하기</a>
                    
                 </div> 
                 </div>

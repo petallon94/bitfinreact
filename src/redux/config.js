@@ -11,6 +11,8 @@ export const actionType = {
     setSearchResultDataList: "setSearchResultDataList",
     Mnick: "Mnick",
     Mnum: "Mnum",
+    Mpic : "Mpic",
+
 }
 
 export const mainViewType = {

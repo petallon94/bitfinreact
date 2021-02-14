@@ -29,9 +29,8 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 3,
   },
   header: {
-    backgroundColor: "#f57145",
-    color: "black",
-    boxShadow: "0px 0px 10px 0px #333"
+    backgroundColor: "#ff7e61",
+    boxShadow: "0px 0px 3px 0px #333"
   },
   title: {
     display: 'none',
@@ -44,9 +43,9 @@ const useStyles = makeStyles((theme) => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: fade(theme.palette.common.white, 0.15),
+    backgroundColor: fade(theme.palette.common.black, 0.15),
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.white, 0.25),
+      backgroundColor: fade(theme.palette.common.black, 0.25),
     },
     marginRight: theme.spacing(2),
     marginLeft: 0,
@@ -116,6 +115,7 @@ const setLogOut = () => {
       loginId: '',
       mnick: '',
       mnum: '',
+      mpic: '',
       logged: false
   });
 
@@ -131,6 +131,7 @@ const setLogOut = () => {
 
   const handleMenuClose = () => {
     setAnchorEl(null);
+    document.location.href = "http://localhost:3000/main/mypage/"
     handleMobileMenuClose();
   };
 
@@ -156,6 +157,7 @@ const setLogOut = () => {
       onClose={handleMenuClose}
     >
       <MenuItem onClick={handleProfileClose}>Profile</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Mypage</MenuItem>
     </Menu>
   );
 
@@ -178,7 +180,7 @@ const setLogOut = () => {
       </NavLink>
       <MenuItem>
         <NavLink exact to="/main/chatting" >
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton aria-label="show 11 new notifications" color="default">
           <Badge badgeContent={1} color="secondary">
             <FaComments />
           </Badge>
@@ -187,7 +189,7 @@ const setLogOut = () => {
       </MenuItem>
       <MenuItem>
         <NavLink exact to="/login" >
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton aria-label="show 11 new notifications" color="default">
           <FiLogIn />
         </IconButton>
         </NavLink>
@@ -201,10 +203,13 @@ const setLogOut = () => {
         >
           <FcSelfie />
         </IconButton>
-        <NavLink exact to="/main/mypage"><p>Profile</p></NavLink>
+        <NavLink exact to="/main/profile"><p>Profile</p></NavLink>
+        <NavLink exact to="/main/mypage"><p>Mypage</p></NavLink>
       </MenuItem>
     </Menu>
   );
+
+  let url="http://localhost:9001/profilesave/"
 
   return (
 
@@ -235,23 +240,18 @@ const setLogOut = () => {
 
           <NavLink exact to="/main/reviewwrite" >
 
-            <IconButton aria-label="show 17 new notifications" color="inherit">
+            <IconButton aria-label="show 17 new notifications" color="default">
                 <FaPencilAlt />
             </IconButton>
             </NavLink>
-            <IconButton aria-label="show 1 new notifications" color="inherit">
-
             <NavLink exact to="/main/Chatting" >
-              <Badge badgeContent={2} color="secondary">
-
+            <IconButton aria-label="show 1 new notifications" color="default">
                 <FaComments />
-              </Badge>
-              </NavLink>
             </IconButton>
+            </NavLink>
+            <NavLink exact to="/" >
 
-            <NavLink exact to="/main/login" >
-
-            <IconButton aria-label="show 1 new notifications" color="inherit" onClick={setLogOut}>
+            <IconButton aria-label="show 1 new notifications" color="default" onClick={setLogOut}>
 
                 <FiLogIn />
                 
@@ -265,7 +265,7 @@ const setLogOut = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <FcSelfie />
+              <img src={url+store.getState().mpic} alt="없음"style={{width:'30px'}}/>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>
