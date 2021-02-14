@@ -24,7 +24,7 @@ class list extends Component{
           }          
       }) 
       .then(res=>{       
-        console.log(res.data);     
+        //console.log(res.data);     
           this.setState({
               postData:res.data
           })
@@ -41,13 +41,15 @@ class list extends Component{
 
 render(){
   return (
-     <div className="mypage_list_wrapper">      
+      <div className="mainpage_container">
+     <div className="mainpage_list_wrapper">      
         {
         this.state.postData.map((row,idx)=>(
         <Postcard row={row} key={idx} no={idx+1}
         history={this.props.history}/>
         ))
         }    
+      </div>
       </div>
   )
 }
