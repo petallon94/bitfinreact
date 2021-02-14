@@ -76,7 +76,7 @@ closeModal = () => {
       return (
         <div className="previous_comment">
           <div className="DetailComment-bar">
-          <NavLink to={"/main/mypage"} className="DetailComment-profile">
+          <NavLink to={"/main/mypage/"+amnick} className="DetailComment-profile">
             <img src={'http://localhost:9001/profilesave/'+this.props.mpic}/>
           </NavLink>
               <span className="add-comment-box">{amnick}</span>

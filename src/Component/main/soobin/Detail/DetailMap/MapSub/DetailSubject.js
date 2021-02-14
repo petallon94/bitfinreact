@@ -55,12 +55,12 @@ class DetailSubject extends Component {
         {
             // up_btn=<button className="up_btn">수정</button>
             // del_btn=<button className="del_btn" onClick={this.delReview.bind(this)}>삭제</button>
-            up_btn=<IconButton className="up_btn" onClick="">
+            up_btn=<IconButton style={{position:'relative',left:'340px',top:'-85px'}} className="up_btn" onClick="">
                         <FaWrench/>
                     </IconButton>
 
             
-            del_btn=<IconButton className="del_btn" onClick={this.delReview.bind(this)}>
+            del_btn=<IconButton style={{position:'relative',left:'340px',top:'-85px'}} className="del_btn" onClick={this.delReview.bind(this)}>
                         <FaTrashAlt/>
                     </IconButton>
 
@@ -72,7 +72,7 @@ class DetailSubject extends Component {
                     <div className="DetailSubject-box">
                     
                         <div className="DetailSubject-profile" onClick="/main/mypage">
-                            <NavLink to={"/main/mypage"} className="DetailSubject-profile-picture">
+                            <NavLink to={"/main/mypage/"+this.props.mnick} className="DetailSubject-profile-picture">
                                 <img src={'http://localhost:9001/profilesave/'+this.props.mpic}/>
                             </NavLink>
                             <div className='DetailSubject-nick'>{this.props.mnick}</div>
@@ -107,8 +107,8 @@ class DetailSubject extends Component {
                         </div>
                         <div className="DetailSubject-sub">{this.props.rcontent}</div>
                     </div>
-                    {up_btn}
-                                {del_btn}
+                        {up_btn}
+                        {del_btn}
                 </div>
                 <input type="text" style={{display:'none'}} name="rnum" value={this.state.rnum}/>
                 
