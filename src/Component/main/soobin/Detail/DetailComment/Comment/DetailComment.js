@@ -94,6 +94,7 @@ class DetailComment extends Component {
                     {this.state.acontentList.map(item =>
                         <AddComment
                         arnum={this.props.rnum}
+                        mpic={this.props.mpic}
                         anum={item.anum}
                         amnick={item.amnick}
                         acontent={item.acontent}
