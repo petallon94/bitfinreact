@@ -22,7 +22,9 @@ class DetailPage extends Component {
                     <DetailMapSubContainer
                     rnum={this.props.match.params.rnum}
                     />
-                    <DetailLikeContainer/>
+                    <DetailLikeContainer
+                    rnum={this.props.match.params.rnum}
+                    />
                     <DetailCommentContainer
                     rnum={this.props.match.params.rnum}
                     />
