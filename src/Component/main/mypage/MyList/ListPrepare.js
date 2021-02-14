@@ -11,9 +11,10 @@ class ListPrepare extends Component {
     }
 
     state = {
-        mypageList:[]
+        mypageList:[],
+        imgurl:'http://localhost:9001/reviewsave/'
     }
-
+    
     getMypageList=()=>{
         let url = "http://localhost:9001/mypage/getMyListInformation";
         axios.get(url,{
@@ -34,10 +35,11 @@ class ListPrepare extends Component {
     componentDidMount(){
          this.getMypageList();
     }
-
+    
     render() {
         return (
             <div className="mypage_listitem">
+                
                 
                 <ListItem>
                     <ListItemAvatar>
@@ -46,7 +48,7 @@ class ListPrepare extends Component {
                     <ListItemText  className="mainlist__header_id" primary={this.state.mypageList.mnick} secondary={this.state.mypageList.resaddr}></ListItemText>
                 </ListItem>
                 <div className="listitem_img">
-                    <img src="http://placehold.it/200" alt="리스트" />
+                    <img src={this.state.imgurl+this.state.mypageList.picname}/>
                     <span>{this.state.mypageList.rscore}</span>
                 </div>
                 <div className="listitem_btn">
