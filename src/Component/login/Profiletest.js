@@ -1,18 +1,36 @@
 import React,{Component} from "react"
 import store from "../../redux/store";
+import "./Profilemain.css";
 import { URL, actionType, mainViewType } from "../../redux/config";
+import {NavLink,Route, Switch} from 'react-router-dom';
+import PassScr from './Profilepass';
+import Profilepro from './Profilepro';
 
 class Profiletest extends Component {
+  
+  state = {
+    profileUrl:this.props.match.url
+  }
+  
+  
   render() {
   return (
     <>
-      <h1>프로필 변경</h1>
-      <dt>Email</dt>
-      <dd>{store.getState().loginId}</dd>
-      <dt>Password</dt>
-      <dd></dd>
-      <dt>Name</dt>
-      <dd></dd>
+    <div className= "profileaa">
+    <div className ="profilemenu">
+      <ul className="list_btn">
+       <li><NavLink exact activeClassName="active_list_btn" to={this.props.match.url}>프로필 수정</NavLink></li>
+       <li><NavLink exact activeClassName="active_list_btn" to={`${this.props.match.url}/pass`} >비밀번호 수정</NavLink></li>
+      </ul>
+
+    </div>
+    <div className = "profilecontents">
+    <Switch>
+        <Route exact path={this.props.match.path} component={PassScr}/>
+        <Route exact path={`${this.props.match.path}/pass`} component={Profilepro}/>
+    </Switch>
+    </div>
+    </div>
     </>
   )
 }
