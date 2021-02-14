@@ -10,6 +10,7 @@ class DetailPicture extends Component {
 
     this.state = {
       picData:'',
+      imgurl:'http://localhost:9001/reviewsave/'
     }
   } 
 //백엔드로부터 num 에 해당하는 데이터 가져오기
@@ -66,13 +67,7 @@ this.onPicData();
           <div className="slide-list-box">
             <Slider {...settings}>
               <div className="slide-list-item">
-                <img src="https://spnimage.edaily.co.kr/images/Photo/files/NP/S/2018/03/PS18033000035.jpg"/>
-              </div>
-              <div className="slide-list-item">
-                <img src="http://www.biztribune.co.kr/news/photo/202010/248646_109212_849.jpg"/>
-              </div>
-              <div className="slide-list-item">
-                <img src="https://ncache.ilbe.com/files/attach/new/20200331/4255758/139520638/11246059404/f268dace5df7a1ead8396bf7f42d65f5_11246059597.jpeg"/>
+                <img src={'http://localhost:9001/reviewsave/'+picData.picname}/>
               </div>
             </Slider>
           </div>
