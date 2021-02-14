@@ -96,21 +96,27 @@ class Profilepro extends Component {
   return (
     <>    
     <div className = "profilenn">
-      <h1>비밀번호 수정</h1> 
-      
-      <img className ="profileimg" src ={propic}></img>
-      <div className = "profileName">
-      <h2>{store.getState().loginId}</h2>
+      <h3 style={{marginBottom:'30px'}}>비밀번호 수정</h3> 
+      <div className="profileTop">
+        
+        <img className ="profileimg" src = {propic}></img>
+        <div className = "profileName">
+          <h3>{store.getState().loginId}</h3>
+        </div>
       </div>
-      <div>
-      <dt>이전 비밀번호 
-          <input name ="mpcc" placeholder="비밀 번호" type = "password" ></input> </dt>
+      <div className="pwdBox">
+        <dt><p>이전 비밀번호</p>
+            <input name ="mpcc" placeholder="비밀 번호" type = "password" ></input>
+        </dt>
       
-      <dt>새 비밀번호 
-      <input name ="mpw" onChange={e=>this.createPsw(e)} placeholder="비밀 번호" type = "password" ></input></dt>
+        <dt><p>새 비밀번호 </p>
+          <input name ="mpw" onChange={e=>this.createPsw(e)} placeholder="비밀 번호" type = "password" ></input>
+        </dt>
       
-      <dt>새 비밀번호 확인 
-          <input name ="mpwcc" onChange={e => this.repeatPassword(e)} placeholder="비밀 번호 확인" type="password"/> </dt>
+        <dt><p>새 비밀번호 확인</p> 
+          <input name ="mpwcc" onChange={e => this.repeatPassword(e)} placeholder="비밀 번호 확인" type="password"/>
+        </dt>
+
       </div>
     
       {this.state.mpw ? (this.state.isValidPsw ? ( <span style={{ color: "blue" }}>사용가능한 비밀번호입니다.</span>
