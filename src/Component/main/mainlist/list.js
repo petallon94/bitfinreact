@@ -24,12 +24,12 @@ class list extends Component{
           }          
       }) 
       .then(res=>{       
-        //console.log(res.data);     
+        console.log(res.data);     
           this.setState({
               postData:res.data
           })
       }).catch(err=>{
-          console.log("목록 출력 에러"+err);
+          console.log("포스팅목록 출력 에러"+err);
       });
       
   }
@@ -41,7 +41,7 @@ class list extends Component{
 
 render(){
   return (
-     <div className="mainlist">      
+     <div className="mypage_list_wrapper">      
         {
         this.state.postData.map((row,idx)=>(
         <Postcard row={row} key={idx} no={idx+1}

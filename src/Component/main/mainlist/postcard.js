@@ -13,7 +13,8 @@ class postcard extends Component {
         this.state={
           datalist:[],
           hashlist:[],
-          commlist:[]
+          commlist:[],
+          imgurl:'http://localhost:9001/reviewsave/'
         
         }
     } 
@@ -94,10 +95,10 @@ class postcard extends Component {
         this.props.history.push("/main/detail/"+this.state.datalist.rnum);
         }
 
-        const url="http://localhost:9001/reviewsave/";
+
         return (
             
-            <Card className="mainlist_container">
+            <Card className="mypage_listitem">
                 {this.props.row.rnum}
                 <ListItem>
                     <ListItemAvatar>
@@ -106,14 +107,13 @@ class postcard extends Component {
                     <ListItemText  className="mainlist__header_id" onClick={goMypage} primary={this.state.datalist.mnick} secondary={this.state.datalist.resaddr}/>
                 </ListItem>
                 <div className="listitem_img">
-                    <img src={url+this.state.datalist.picname} alt="" ></img>
-                    
+                    <img src={this.state.imgurl+this.state.datalist.picname} alt="" ></img>
+                    <span>{"⭐".repeat(Number(this.state.datalist.rscore))}</span>
                 </div>
                 <div className="postcard_txt">
                 <div className="listitem_btn">
                     <span>{this.state.datalist.resname}</span>
                     <span>❤{this.state.datalist.likes}</span>
-                    <span>{this.state.datalist.rscore}</span>
                 </div>
                 <div className="listitem_btn writeday">
                     <span>{this.state.datalist.rwriteday}</span>

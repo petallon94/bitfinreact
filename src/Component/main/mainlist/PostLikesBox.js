@@ -4,6 +4,7 @@ import { RiHeartsLine, RiHeartsFill} from "react-icons/ri";
 import {FaComments} from "react-icons/fa";
 import {BsThreeDotsVertical } from "react-icons/bs";
 import store from "../../../redux/store";
+import "./mainlist.css";
 
 
 const PostLikesBox = (props) => {

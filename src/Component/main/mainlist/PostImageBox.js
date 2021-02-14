@@ -1,4 +1,4 @@
-// import React, { useCallback, useState } from 'react';
+ import React, { useCallback, useState } from 'react';
 // import {CardMedia} from '@material-ui/core';
 // import "../mainlist.css";
 
@@ -6,7 +6,7 @@
 
 
 // //import { backUrl } from '../config/config';
-// const PostImageBox = (post) => {
+ const PostImageBox = (post) => {
 
 //   //const url="http://localhost:9001/photo/";
 //   return (
@@ -52,7 +52,7 @@
 //       </>
 //     );
 //   }
-//   return (
+   return (
 //     <>
 //       <div>
 //         <img role="presentation" style={{ width: '50%' }} src={`${images[0].src}`} alt={images[0].src} onClick={onZoom} />
@@ -70,10 +70,10 @@
 //       {/* {showImagesZoom && <ImagesZoom images={images} onClose={onClose} />}  */}
 //     </>
 //   );
-// };
+ };
 
 // PostImageBox.propTypes = {
 //   images: PropTypes.arrayOf(PropTypes.object),
 // };
 
-//export default PostImageBox;
+export default PostImageBox;
