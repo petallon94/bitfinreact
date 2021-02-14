@@ -28,3 +28,12 @@ ul{
     list-style: none;
     text-decoration: none;
 }
+.logo{
+
+    max-height: 80px;
+}
+
+.MuiAppBar-colorPrimary{
+
+    background-color: brown;
+}

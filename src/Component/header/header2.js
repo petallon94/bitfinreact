@@ -8,22 +8,30 @@ import InputBase from '@material-ui/core/InputBase';
 import Badge from '@material-ui/core/Badge';
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-import { FaLaughWink, FaHeart, FaComments} from "react-icons/fa";
+import { FaLaughWink, FaPencilAlt, FaComments} from "react-icons/fa";
 import {BiSearchAlt, BiMenu } from "react-icons/bi";
+import Icon from '@material-ui/core/Icon';
+
 import {FiMoreVertical, FiLogIn} from "react-icons/fi";
 import { FcSelfie } from "react-icons/fc";
 import { NavLink } from 'react-router-dom';
-
+import logow from "../../image/logo_w.png";
 import store from "../../redux/store";
 import {actionType, mainViewType} from "../../redux/config";
-
+import './header.css';
+import { ListItemSecondaryAction } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    background: theme.palette.background.default,
     border: 0,
     borderRadius: 3,
+  },
+  header: {
+    backgroundColor: "#f57145",
+    color: "black",
+    boxShadow: "0px 0px 10px 0px #333"
   },
   title: {
     display: 'none',
@@ -84,7 +92,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PrimarySearchAppBar() {
+export default function SecondarySearchAppBar() {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -98,16 +106,21 @@ export default function PrimarySearchAppBar() {
 
 
 
- const setLogOut = () => {
-    console.log("Menu setLogOut()");
-    
-    store.dispatch({
-        type: actionType.LOG_IN,
-        // mainView: mainViewType.MainPage
-        loginId: '',
-        logged: false
-    });
+const setLogOut = () => {
+  alert("로그아웃 되었습니당!!!! 다음에 또만나요");
+  
+  store.dispatch({
+      type: actionType.LOG_OUT,
+      // mainView: mainViewType.MainPage
+      loginId: '',
+      mnick: '',
+      mnum: '',
+      logged: false
+  });
+
 }
+
+
 
 
   const handleMobileMenuClose = () => {
@@ -119,11 +132,17 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
   };
 
+  const handleProfileClose = () => {
+    setAnchorEl(null);
+    document.location.href = "http://localhost:3000/main/profile/"
+    handleMobileMenuClose();
+  };
+
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = 'primary-search-account-menu';
+  const menuId = 'secondary-search-account-menu';
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -134,13 +153,12 @@ export default function PrimarySearchAppBar() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleProfileClose}>Profile</MenuItem>
     </Menu>
   );
 
   {/*모바일일때 */}
-  const mobileMenuId = 'primary-search-account-menu-mobile';
+  const mobileMenuId = 'secondary-search-account-menu-mobile';
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -151,24 +169,11 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <NavLink exact to="/main/reviewwrite" >
       <MenuItem>
-      <NavLink exact to="/main/follow" >
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <FaLaughWink />
-          </Badge>
-        </IconButton>
-        <p>follower</p>
-        </NavLink>
+        <FaPencilAlt/>
       </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <FaHeart />
-          </Badge>
-        </IconButton>
-        <p>likes</p>
-      </MenuItem>
+      </NavLink>
       <MenuItem>
         <NavLink exact to="/main/chatting" >
         <IconButton aria-label="show 11 new notifications" color="inherit">
@@ -176,7 +181,6 @@ export default function PrimarySearchAppBar() {
             <FaComments />
           </Badge>
         </IconButton>
-        <p>chatting</p>
         </NavLink>
       </MenuItem>
       <MenuItem>
@@ -184,7 +188,6 @@ export default function PrimarySearchAppBar() {
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <FiLogIn />
         </IconButton>
-        <p>login</p>
         </NavLink>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
@@ -205,13 +208,11 @@ export default function PrimarySearchAppBar() {
 
     
     <div className={classes.grow}>
-      <AppBar position="static">
+      <AppBar className={classes.header} position="static">
         <Toolbar>
           {/*타이틀 */}
           <NavLink exact to="/main" >
-          <Typography className={classes.title} variant="h6" edge="start" noWrap >
-            호로록(Just do eat)           
-          </Typography>
+          <img className="logo" src ={logow}/>
           </NavLink>  
           {/*검색 */}
           <div className={classes.search}>
@@ -229,16 +230,11 @@ export default function PrimarySearchAppBar() {
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <FaLaughWink />
-              </Badge>
-            </IconButton>
+          <NavLink exact to="/main/reviewwrite" >
             <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <FaHeart />
-              </Badge>
+                <FaPencilAlt />
             </IconButton>
+            </NavLink>
             <IconButton aria-label="show 1 new notifications" color="inherit">
             <NavLink exact to="/main/Chatting" >
               <Badge badgeContent={2} color="secondary">
@@ -246,9 +242,13 @@ export default function PrimarySearchAppBar() {
               </Badge>
               </NavLink>
             </IconButton>
+            
             <IconButton aria-label="show 1 new notifications" color="inherit" onClick={setLogOut}>
+            <NavLink exact to="/" >
                 <FiLogIn />
+                </NavLink>
             </IconButton>
+            
             <IconButton
               edge="end"
               aria-label="account of current user"

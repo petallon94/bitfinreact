@@ -8,8 +8,10 @@ import axios from 'axios';
 class LoginSignup extends Component{
 
    
-
-    state ={
+  constructor(props) {
+    super(props);
+    
+    this.state={
         memailid : "",
         mnick : "",
         mpw : "",
@@ -18,6 +20,7 @@ class LoginSignup extends Component{
         checkid : "",
         checkNick : "",
         };
+  }
 
         //이메일 형식 확인
         checkValidEmail = () => {
@@ -202,7 +205,7 @@ class LoginSignup extends Component{
                <h4>호로록만의 맛집정보를 보시려면 가입하세요</h4>
 
                <div className = "Signupform">
-               <input className ="Signupemail" name ="memailid" onChange={e => this.createEmail(e)} placeholder="휴대폰 번호 또는 이메일 주소"/>
+               <input className ="Signupemail" name ="memailid" onChange={e => this.createEmail(e)} placeholder="이메일 주소"/>
                <button className ="checkEmailbtn" onClick ={this.checkDupliEmail.bind(this)} >중복확인</button>  
                {this.state.checkid===1?(<span>아이디가 중복되었습니다.</span>):this.state.checkid===0?(<span>아이디 사용 가능합니다.</span>):null}
                 <input className ="Signupnick" name ="mnick" onChange={e=>this.createNick(e)} placeholder="닉네임" />
