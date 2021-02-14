@@ -1,25 +1,25 @@
-import React, { useCallback, useState } from 'react';
-import {CardMedia} from '@material-ui/core';
-import "../mainlist.css";
+// import React, { useCallback, useState } from 'react';
+// import {CardMedia} from '@material-ui/core';
+// import "../mainlist.css";
 
-//import { PlusOutlined } from '@ant-design/icons';
+// //import { PlusOutlined } from '@ant-design/icons';
 
 
-//import { backUrl } from '../config/config';
-const PostImageBox = (post) => {
+// //import { backUrl } from '../config/config';
+// const PostImageBox = (post) => {
 
-  //const url="http://localhost:9001/photo/";
-  return (
-    <div className="postcard_photo">
-     <CardMedia className="postcard__photo"
-      image="https://lh3.googleusercontent.com/proxy/sWn8UnM7WbDe5iS0huGmdpjF3Fp791e0z_kty1c2fORjPI5JZTz23MvJAjFsINOCZ5gBZkrSca4CBoAd-rUgPF-J1wIjEehyAAg0kmNWYQAHcsjTGrh4StghED68qU7HpHdh0jYQEGCNvw7k5CHbeZqa-G61vFd1xQ"
-      title="시골된장찌개"/>
-     </div>
+//   //const url="http://localhost:9001/photo/";
+//   return (
+//     <div className="postcard_photo">
+//      <CardMedia className="postcard__photo"
+//       image="https://lh3.googleusercontent.com/proxy/sWn8UnM7WbDe5iS0huGmdpjF3Fp791e0z_kty1c2fORjPI5JZTz23MvJAjFsINOCZ5gBZkrSca4CBoAd-rUgPF-J1wIjEehyAAg0kmNWYQAHcsjTGrh4StghED68qU7HpHdh0jYQEGCNvw7k5CHbeZqa-G61vFd1xQ"
+//       title="시골된장찌개"/>
+//      </div>
 
-  )
-}
+//   )
+// }
 
-export default PostImageBox;
+// export default PostImageBox;
 
 
 // const PostImageBox = ({ images }) => {

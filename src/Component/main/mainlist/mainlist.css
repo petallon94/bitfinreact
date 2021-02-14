@@ -3,6 +3,8 @@
     max-width: 1200px;    
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(300px, auto);
+    gap:10px;
     
 }
 /* postcard */
@@ -19,7 +21,9 @@
 .mainlist__header_id{
     cursor: pointer;
 }
-
+.postcard_detail{
+    cursor: pointer;
+}
 .mainlist__id {
  margin: 20px 0px 20px 20px;
     font-weight: normal;
@@ -32,8 +36,17 @@
 .mainlist__input {
     flex: 1;
 }
-/* 사진 */
-.postcard_photo {
-    height: 0;
-    padding-top: '56.25%';
+
+.postcard__commend_container{
+    width: '100%';
+    max-width: '36ch';
+}
+.postcard__commend_nick{
+display: inline;
+cursor: pointer;
+}
+
+.postcard_txt {
+    padding-left: 30px;
+    padding-right: 30px;
 }

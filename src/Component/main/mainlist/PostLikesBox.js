@@ -1,13 +1,16 @@
 import React, {useState, useCallback} from 'react';
-import {CardActions, Popover, ButtonGroup, Button } from '@material-ui/core';
+import {Link, CardActions, Popover, ButtonGroup, Button,ListItem,ListItemAvatar,Avatar,List,ListItemText,Divider,Typography } from '@material-ui/core';
 import { RiHeartsLine, RiHeartsFill} from "react-icons/ri";
 import {FaComments} from "react-icons/fa";
 import {BsThreeDotsVertical } from "react-icons/bs";
-import PostCommendContainer from './PostCommendBox';
+import store from "../../../redux/store";
 
-const PostLikesBox = (post) => {
+
+const PostLikesBox = (props) => {
 const [liked, setLiked] = useState(false);
 const [commentFormOpend, setCommendFormOpened] = useState(false);
+
+
 //const liked = post.Likers.find(vv) => v.id === id);
 //좋아요 토글기능  prev라는건 이전 데이터를 가지고 결과를 나타냄 !prev하면 false는 true로, true는 false로 변경됨
 const onToggleLike = useCallback(() => {
@@ -18,43 +21,15 @@ const onToggleComment = useCallback(() => {
   setCommendFormOpened((prev) => !prev);
   },[]);
 
-// handleChange=(e)=>{
-//     this.setState({
-//         name:e.target.value
-//     })
-// }
 
-// handleEnterInsert=(e)=>{
-//     if(e.key=='Enter'){
-//         this.setState({
-//             names:this.state.names.concat(this.state.name),
-//             name:''
-//         })
-//     }
-// }
 
-// //더블클릭시 배열에서 삭제
-// handleRemove=(index)=>{
-//     const {names}=this.state;
-//     this.setState({
-//         //index 번째를 제외한 원소만 새 배열로 넣어준다
-//         //names:names.filter((item,i)=>i!==index)
-
-//         //또는 slice 를 이용해서 넣어줘도 된다
-//         //배열에 0~index-1 까지 잘라서 넣어주고, index 다음값부터 끝까지 배열에 넣어준다
-//         //... 펼침 연산자
-//         names:[
-//             ...names.slice(0,index),
-//             ...names.slice(index+1,names.length)
-//         ]
-//     })
-// }
-
+//마이페이지로 이동 
+const nick =  props.nick;  
 
         return (
-           <div className="postcard_likes">
+         
+           <div className="postcard_likes">               
               <CardActions disableSpacing>
-                {/* {cover={props.[0] && <PostImages images={post.Images}/>} */}
                 {[liked
                  ? <RiHeartsLine key="heart" onClick={onToggleLike}/>
                 : <RiHeartsFill key="heart" onClick={onToggleLike}/>,
@@ -62,7 +37,7 @@ const onToggleComment = useCallback(() => {
                  <Popover key="more" content={(           
                   <ButtonGroup>
                   {/* 내아이디와 게시글작성자의 id가 같으면 수정삭제가능 */}
-                 { post.mnum === post.r
+                 { store.getState().mnick === props.nick
                    ? 
                   <>
                    <Button color="primary">수정</Button>
@@ -77,12 +52,36 @@ const onToggleComment = useCallback(() => {
               ]}
              </CardActions>
              {commentFormOpend && (
-            <div>
-               <PostCommendContainer/>
-             </div>)}
-            
-           
+               <>
+               <Divider/>
+                <List className="postcard__commend_container">
+                <ListItem alignItems="flex-start">
+                <ListItemAvatar>
+                <Avatar className="postcard__commend_profphoto" alt="user" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRshg1UlZU8R3dPaWcIAdVgnkrLSKgN-knvPg&usqp=CAU" />
+            </ListItemAvatar>
+             <ListItemText className="postcard__commend"
+                primary={props.comm}
+               secondary={
+               <React.Fragment>              
+              <Typography
+                component="span"
+                variant="body2"
+                className="postcard__commend_nick"
+                color="textPrimary"
+              >
+               <Link to={"/main/mypage/"+{nick}} >{props.nick} </Link>
+              </Typography>
+              {props.date}
+            </React.Fragment>
+          }
+        />
+      </ListItem>
+      
+      </List>     
 
+              </>
+              )}
+             
            </div>
 
         )

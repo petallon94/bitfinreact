@@ -21,16 +21,17 @@ class list extends Component{
       axios.get(url,{
           params:{
               mnum: store.getState().mnum
-          }
-      })
+          }          
+      }) 
       .then(res=>{       
-         //console.log(res.data);     
+        //console.log(res.data);     
           this.setState({
               postData:res.data
           })
       }).catch(err=>{
           console.log("목록 출력 에러"+err);
       });
+      
   }
 
   componentDidMount() {
