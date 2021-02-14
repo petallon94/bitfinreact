@@ -30,6 +30,7 @@
 /* 리스트부분 시작 */
 
 .mypage_list_wrapper{
+    margin-top:30px;
     width:1200px;
     /* 그리드를 쓸게요. */
     display:grid;
@@ -50,8 +51,9 @@
 
 /* 리스트아이템 */
 .mypage_listitem{
-    border:3px solid gray;
+    border:none;
     border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
     overflow:hidden;
 }
 
@@ -61,6 +63,7 @@
     height:300px;
     overflow:hidden;
     display:flex;
+    position:relative;
 }
 .listitem_img img{
     width:100%;
@@ -75,6 +78,7 @@
     height:30px;
     margin-left:20px;
     bottom:20px;
+    font-size:1.5em;
 }
 
 
@@ -85,18 +89,36 @@
     margin-top:10px;
     height:30px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    position:relative;
 }
 .listitem_btn span{
-    margin-left:30px;
-    margin-right:30px;
     font-weight:bold;
+}
+.listitem_btn span:nth-child(1){
+    margin-left:30px;
+    width:300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* 라인수 */
+    -webkit-box-orient: vertical;
+    word-wrap:break-word; 
+}
+.listitem_btn span:nth-child(2){
+    position:absolute;
+    right:40px;
+    top:10px; 
+}
+
+.listitem_btn.writeday{
+    margin-top:-12px;
 }
 
 .listitem_btn.writeday span{
     font-weight:normal;
     color:gray;
+    font-size:0.8rem;
     
 }
 

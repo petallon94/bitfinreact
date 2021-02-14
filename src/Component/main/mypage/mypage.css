@@ -1,45 +1,48 @@
-a{
-    text-decoration: none;
-}
-
 body{
     width:100%;
     margin:0;
     overflow-y:scroll;
 }
 
-.mypage_container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    width:100%;
-    margin:0;
-    margin-bottom:120px;
+a{
+    text-decoration:none;
 }
 
+/* 전체 컨테이너 */
+.mypage_container{
+    margin-top:20px;
+}
+/* 히든플레이스 */
+div.hidden_place{
+    display:none;
+}
+
+/* 프로필 컨테이너 */
 .profile_container{
     display:flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    margin-top:120px;
-    margin-bottom:30px;
-
+    
 }
+
 .profile_wrapper{
     display:flex;
     justify-content: center;
     align-items: center;
     width:1200px;
-    border:1px solid;
-    padding:20px 0px;
+    /* box-shadow:0px 0px 5px rgba(0,0,0,0.3); */
+    
+    border-bottom: 2px solid rgba(0,0,0,0.1);
+
 }
+
+/* 사진 */
 .profile_image{
-    width:200px;
-    height:200px;
+    width:150px;
+    height:150px;
     border-radius: 70%;
     overflow:hidden;
-    margin-right:120px;
+    margin-right:100px;
     display:flex;
 }
 .profile_image img{
@@ -48,31 +51,54 @@ body{
     object-fit: cover;
 }
 
+/* 프로필 위치 */
 .profile_place{
-    width:600px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width:800px;
+    margin-top:30px;
+    margin-bottom:30px;
 }
 
+/* 프로필의 이름, 버튼위치 */
 .profile_nameplace{
     display:flex;
     align-items: center;
 }
-
-.profile_nameplace > h1{
-    margin-right:30px;
+.profile_nameplace h1{
+    font-size: 2rem;
+    margin-bottom:15px;
+}
+.profile_nameplace button.profile_edit{
+    border-color: rgba(0,0,0,0.1);
+    border-radius: 5px;
+    margin-left:20px;
+    margin-bottom:10px;
+    background-color:white;
 }
 
+
+/* 게시물, 팔로우, 팔로워 */
 .profile_information{
-    display: flex;
+    display:flex;
     align-items: center;
-    
-    font-size:20px;  
-    margin-bottom:20px;
-    
 }
+
 .profile_information div{
-    margin-right:30px;
+    width:150px;
+    height:50px;
+    display:flex;
+    align-items: center;
 }
+
+.profile_information div b{
+    margin-left:10px;
+}
+
+/* 자기소개 */
 .profile_introduce{
+    margin-top:20px;
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -81,5 +107,41 @@ body{
     word-wrap:break-word; 
     line-height: 1.2em;
     /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
-
 }
+
+/* 리스트 버튼 */
+.mypge_list_btn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    list-style: none;
+    font-size:22px;
+    margin-top:40px;
+    margin-bottom:25px;
+}
+.mypge_list_btn li{
+    width:100px;
+    text-align: center;
+    margin-right:30px
+}
+.mypge_list_btn li a{
+    text-decoration: none;
+    color:gray;
+}
+.mypge_list_btn li b{
+    display:none;
+}
+.mypge_list_btn .active_list_btn{
+    color:black;
+    font-weight:bold;
+    border-bottom:3px solid gray;
+}
+.mypge_list_btn .active_list_btn b{
+    display:inline
+}
+
+.Mypge_list_show{
+    display:flex;
+    justify-content: center;
+}
+
