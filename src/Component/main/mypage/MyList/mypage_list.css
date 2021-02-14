@@ -55,6 +55,8 @@
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
     overflow:hidden;
+    transform: scale(1);
+    transition:0.3s;
 }
 
 /* 이미지 */
@@ -109,6 +111,8 @@
     position:absolute;
     right:40px;
     top:10px; 
+    z-index:10;
+    cursor:pointer;
 }
 
 .listitem_btn.writeday{
@@ -127,6 +131,7 @@
 .listitem_content_wrapper{
     padding:25px;
     padding-top:10px;
+    color:black;
 }
 
 /* 타이틀 */
@@ -141,6 +146,11 @@
     
 }
 /* 콘텐츠 */
+
+.listitem_content_wrapper > a:hover{
+    text-decoration: none;
+}
+
 .listitem_contents{
     overflow: hidden;
     text-overflow: ellipsis;
@@ -150,4 +160,33 @@
     word-wrap:break-word; 
     line-height: 1.2em;
     /* line-height 가 1.2em 이고 3라인을 자르기 때문에 height는 1.2em * 3 = 3.6em */
+    color:black;
+    text-decoration: none;
+}
+
+
+.mypage_listitem:hover{
+    transform: scale(1.02);
+}
+
+
+
+
+
+
+
+@media (max-width:1199px){
+    .mypage_list_wrapper{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .mypage_listitem{
+        width:90%;
+        margin:5% 5%;
+        
+    }
+
 }

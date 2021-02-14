@@ -89,9 +89,6 @@ class mypage extends Component{
     }
 
 
-    //팔로워 삭제
-
-
     render(){
         return(
             <div className="mypage_container">
@@ -109,9 +106,9 @@ class mypage extends Component{
                                 <h1>{this.state.mnick}</h1>
                                 {store.getState().mnick===this.props.match.params.mnick?<button className="profile_edit">프로필 편집</button>
                                 :this.state.following?
-                                <button onClick={this.followbtn}>팔로우취소하기</button>
+                                <button onClick={this.followbtn} className="followno_btn">팔로우취소하기</button>
                                 :
-                                <button onClick={this.followbtn}>팔로우하기</button>
+                                <button onClick={this.followbtn} className="follow_btn">팔로우하기</button>
                                 }
                             </div>
 
@@ -122,7 +119,6 @@ class mypage extends Component{
                             </div>
 
                             <div className="profile_introduce">
-                                안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요안녕하세요
                                 {this.state.mintro}
                             </div>
 
@@ -146,6 +142,8 @@ class mypage extends Component{
                         <Route exact path={`${this.props.match.path}/wes`} component={MyWesList}/>
                         <Route exact path={`${this.props.match.path}/etc`} component={MyEtcList}/>
                     </Switch>
+                </div>
+                <div className="Mypage_list_footer">
                 </div>
             </div>
         );
