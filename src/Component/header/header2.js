@@ -265,7 +265,7 @@ const setLogOut = () => {
               onClick={handleProfileMenuOpen}
               color="inherit"
             >
-              <img src={url+store.getState().mpic} alt="없음"style={{width:'30px'}}/>
+              <img className="profilepic" src={url+store.getState().mpic} alt="없음"style={{width:'30px'}}/>
             </IconButton>
           </div>
           <div className={classes.sectionMobile}>

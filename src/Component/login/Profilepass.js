@@ -112,13 +112,12 @@ imageupup =(e)=>{
      <NavLink exact to="/main" >
       <button onClick = {this.imageupup.bind(this)} >프로필사진 수정</button>
       </NavLink>
-      <h3>===========================================</h3>
-      <dt>Email</dt>
-      <dd>{store.getState().loginId}</dd>
-      <dt>Password</dt>
-      <dd>{store.getState().mnick} </dd>
-      <dt>Name</dt>
-      <dd>{store.getState().mnum}</dd>
+      <h3>==================================</h3>
+      <dt>아이디</dt>
+      <input className="changeNick" value ={store.getState().mnick}></input>
+      <dt>소개글</dt>
+      <textarea className="changeintro"> </textarea>
+      
     </div>
     </>
   )

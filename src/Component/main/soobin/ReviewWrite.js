@@ -137,7 +137,7 @@ class ReviewWrite extends Component{
         
          let data=this.state;
 
-        
+        console.log(this.state.rmnum);
         //let hashtag=this.state.rcontent.match(/#[^\s#]+/g)
         let url="http://localhost:9001/review/insertreview";
             //
@@ -196,20 +196,34 @@ class ReviewWrite extends Component{
             <input type="text" style={{display:'none'}}
                 name="rmnum" value={this.state.rmnum}/>
                 <div>
+                    <div className="review_insertcon">
+                        <div>
+                            <div className="score_sel">
+                                
+                                <select onChange={this.selectRscore}
+                                     value={this.state.rscore}
+                                     name="rscore">
+                                    <option value="">별점</option>
+                                    <option value="5">5</option>
+                                    <option value="4">4</option>
+                                    <option value="3">3</option>
+                                    <option value="2">2</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
 
-                <div className="main_insert">
-                    
-                    <div className="insert_start">
-                        <div className="insert_detail1">
-                            <span id="addfile" style={{cursor:'pointer'}}>추가</span>
-                            <input type="file" 
-                                onChange={this.imageUpload.bind(this)}
-                               />
-                            <p className="file_check">미리보기</p>
-                            <img src={url+this.state.picname} alt="없음"
-                            style={{width:'100px'}}
-                            />
-
+                            <div className="category_sel"> 
+                                <select onChange={this.selectRcategory}
+                                    value={this.state.rcategory}
+                                    name="rcategory">
+                                    <option value="">카테고리</option>
+                                    <option value="한식">한식</option>
+                                    <option value="중식">중식</option>
+                                    <option value="일식">일식</option>
+                                    <option value="양식">양식</option>
+                                    <option value="기타">기타</option>
+                                </select>
+                            </div>
                         </div>
 
                         <div className="content_form">
