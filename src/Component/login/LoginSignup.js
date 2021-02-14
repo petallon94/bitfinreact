@@ -4,6 +4,7 @@ import {isEmail,isPassword,isNick} from "./SignupCheck";
 import { withRouter } from 'react-router-dom';
 import logoh from "../../image/logo_h.png";
 import axios from 'axios';
+import { NavLink } from 'react-router-dom';
 
 class LoginSignup extends Component{
 
@@ -168,7 +169,6 @@ class LoginSignup extends Component{
                   axios.post(url,data)
                 .then(res=>{
                   alert("회원가입 성공! 로그인해주세요!");
-                  this.props.history.push("http://localhost:3000/login");
                 })
                 }, 2000);
 
@@ -223,7 +223,8 @@ class LoginSignup extends Component{
                 {this.state.mpwcc ? ( this.state.isMatchPassword ? (<span style={{ color: "blue" }}>비밀번호 확인완료</span>
                 ) : (<span style={{ color: "red" }}> 비밀번호가 일치하지 않습니다.</span>)) : null} <br></br>
                    
-                {this.state.isMatchPassword &&this.state.isValidEmail&& this.state.isValidNick&& this.state.isValidPsw ? (<button className ="Signupbtn" onClick ={this.memInsert.bind(this)} >가입</button>)
+                {this.state.isMatchPassword &&this.state.isValidEmail&& this.state.isValidNick&& this.state.isValidPsw ? 
+                (<NavLink exact to="/" ><button className ="Signupbtn" onClick ={this.memInsert.bind(this)}>가입</button></NavLink> )
                 :(<button className ="Signupbtn" onClick ={this.memalert.bind(this)} >조건 다 만족 후 가입</button>)} <br></br>
                    
                    <a>가입하면  호로록의 약관, 데이터 정책,<br></br> 및 쿠키정책에 동의하게 됩니다.</a>
