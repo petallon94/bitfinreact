@@ -9,6 +9,9 @@ import MyKorList from './MyList/MyKorList';
 import MyWesList from './MyList/MyWesList';
 import './mypage.css';
 import store from "../../../redux/store";
+import Modal from '../follow/modal/FollowModal';
+import FollowListContainer from '../follow/modal/list/FollowListContainer'
+import FollowingListContainer from '../follow/modal/list/FollowingListContainer'
 
 class mypage extends Component{
     constructor(props){
@@ -26,6 +29,8 @@ class mypage extends Component{
         follow:'',
         follower:'',
         following:'',
+        modalOpen: false,
+        modalOpen2: false,
         mypageUrl:this.props.match.url
     }
 
@@ -88,8 +93,25 @@ class mypage extends Component{
         })
     }
 
+    // 팔로워,팔로잉 모달
+    openModal = () => {
+        this.setState({ modalOpen: true })
+    }
+    closeModal = () => {
+        this.setState({ modalOpen: false })
+    }
+
+    // 팔로워,팔로잉 모달
+    openModal2 = () => {
+        this.setState({ modalOpen2: true })
+    }
+    closeModal2 = () => {
+        this.setState({ modalOpen2: false })
+    }
+
 
     render(){
+        //console.log(this.state.mnum);
         return(
             <div className="mypage_container">
                 <div className="hidden_place">
@@ -114,8 +136,8 @@ class mypage extends Component{
 
                             <div className="profile_information">
                                 <div>게시물  <b> {this.state.listCount}</b></div>
-                                <div>팔로우  <b> {this.state.follow}</b></div>
-                                <div>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal2 }>팔로우  <b> {this.state.follow}</b></div>
+                                <div className="profile_information_follow" onClick={ this.openModal }>팔로워  <b> {this.state.following? this.state.follower+1: this.state.follower}</b></div>
                             </div>
 
                             <div className="profile_introduce">
@@ -145,6 +167,16 @@ class mypage extends Component{
                 </div>
                 <div className="Mypage_list_footer">
                 </div>
+                <Modal open={ this.state.modalOpen } close={ this.closeModal }>
+                   <FollowListContainer
+                   mnum={this.state.mnum}
+                   />
+                </Modal>
+                <Modal open={ this.state.modalOpen2 } close={ this.closeModal2 }>
+                   <FollowingListContainer
+                   mnum={this.state.mnum}
+                   />
+                </Modal>
             </div>
         );
     }

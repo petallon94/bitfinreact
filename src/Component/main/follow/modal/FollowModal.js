@@ -15,7 +15,6 @@ class followmodal extends Component {
                     <section>
                         <header>
                             { header }
-                            <FollowHeaderContainer/>
                             <IconButton color="inherit" className="close" onClick={close}>
                                 <Badge color="secondary">
                                     <FaTimes/>
