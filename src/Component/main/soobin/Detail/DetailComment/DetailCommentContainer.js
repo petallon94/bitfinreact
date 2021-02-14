@@ -29,10 +29,12 @@ class DetailCommentContainer extends Component {
         this.onSelectData();
     }
     render() {
+        const {selectData}=this.state;
         return (
             <DetailCommentWrap>
                 <DetailComment
                 rnum={this.props.rnum}
+                mpic={selectData.mpic}
                 />
             </DetailCommentWrap>
         )
