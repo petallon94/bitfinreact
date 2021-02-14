@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { fade, makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -20,7 +20,7 @@ import store from "../../redux/store";
 import {actionType, mainViewType} from "../../redux/config";
 import './header.css';
 import { ListItemSecondaryAction } from '@material-ui/core';
-
+//import LocationService from "../main/search/locationservice";
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
@@ -103,6 +103,8 @@ export default function SecondarySearchAppBar() {
     setAnchorEl(event.currentTarget);
   };
 
+  // const {search} = LocationService();
+  // const [location, setLocation] = useState([]);
 
 
 
@@ -226,14 +228,34 @@ const setLogOut = () => {
             <div className={classes.searchIcon}>
               <BiSearchAlt />
             </div>
+            {/* <div className="form-group m-0">
+            <input type="text" className="form-control" placeholder="호로록하실지역이나 닉네임을 검색하세요" 
+                onChange={async (event)=> {
+                    const value = event.target.value;
+                    try {
+                        const res = search(value);
+                        const content = res.data;
+                        const tempLocation = content.map(
+                            (d) => 
+                            `${d.resaddr}`
+                            ); //배열안에 있는 오브젝트값
+                            setLocation(tempLocation);
+                            
+
+                    } catch (error) {
+                        console.error(error);
+                    }
+                }} /></div>
+               <button type="submit" className="btn">검색</button>  */}
+
             <InputBase
-              placeholder="Search…"
+              placeholder="호로록 검색"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ 'aria-label': 'search' }}
-            />
+            /> 
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
