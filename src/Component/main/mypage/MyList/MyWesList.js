@@ -5,7 +5,7 @@ import axios from 'axios';
 class MyKorList extends Component{
     constructor(props){
         super(props); 
-        console.log("마이코리아리스트");
+        console.log("마이웨스트리스트");
         console.log(this.props.match.params.mnick);
     }
     state = {
