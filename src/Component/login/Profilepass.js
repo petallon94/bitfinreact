@@ -1,10 +1,11 @@
 import React,{Component} from "react"
 import store from "../../redux/store";
 import axios from 'axios';
-import "./Profilemain.css";
+import "./Profilepass.css";
 import propic from "../../image/unprofile.jpg";
 import { NavLink } from 'react-router-dom';
 import { URL, actionType, mainViewType } from "../../redux/config";
+import Button from '@material-ui/core/Button';
 
 class Profilepass extends Component {
 
@@ -16,6 +17,7 @@ class Profilepass extends Component {
       previewURL : '',
       mpic : '',
       mnum : store.getState().mnum,
+      mintro : '',
     };   
 } 
 
@@ -81,13 +83,45 @@ imageupup =(e)=>{
     url:'http://localhost:9001/member/phoupdate',
     data:data,
   }).then(res=>{
-    console.log("workkkkk!");
+    //console.log("workkkkk!");
     this.setMpic(this.state.mpic);
   }).catch(err=>{
     console.log("파일업로드시오류:"+err);
   })
 
 }
+
+profileupdate =(e)=>{
+
+
+  let data = this.state;
+
+  axios({
+    method:'post',
+    url:'http://localhost:9001/member/memupdate',
+    data:data,
+  }).then(res=>{
+    //console.log("workkkkk!");
+    //this.setMpic(this.state.mpic);
+  }).catch(err=>{
+    console.log("파일업로드시오류:"+err);
+  })
+
+
+
+}
+
+
+createmintro=(e)=>{
+  const __mintro = e.target.value;
+  this.setState({ mintro: __mintro });
+}
+
+createmnick=(e)=>{
+  const __mnick = e.target.value;
+  this.setState({ mnick: __mnick });
+}
+
   
   render() {
 
@@ -103,21 +137,32 @@ imageupup =(e)=>{
     <div className = "profilenn">
    
 
-    <span id="addfile" style={{cursor:'pointer'}}>현재파일</span>
+    <div className="picsection">
+    <div className ="proimgsec">
+    <img className="prooimg" src={url+store.getState().mpic} alt="없음"style={{width:'100px'}}/>
+    </div>
+    <div className ="piiic">
+    <h4>{store.getState().mnick}</h4>
     <input type="file"  accept='image/jpg,impge/png,image/jpeg,image/gif' 
       name='profile_img' className='profile_img'
       onChange={this.imageUpload.bind(this)}/>
-      <img src={url+store.getState().mpic} alt="없음"style={{width:'100px'}}/>
-     <p className="file_check">미리보기</p>
      <NavLink exact to="/main" >
-      <button onClick = {this.imageupup.bind(this)} >프로필사진 수정</button>
+      <Button variant="outlined" color="secondary" className="profileupbtn" onClick = {this.imageupup.bind(this)} >프로필사진 수정</Button>
       </NavLink>
-      <h3>==================================</h3>
-      <dt>아이디</dt>
-      <input className="changeNick" value ={store.getState().mnick}></input>
-      <dt>소개글</dt>
-      <textarea className="changeintro"> </textarea>
-      
+      </div>
+    </div>
+    
+      <hr></hr>
+      <div className="cmNN">
+      <b>아이디</b>
+      <input className="changeNick" name ="mnick" onChange={e=>this.createmnick(e)} value ={store.getState().mnick}></input> <br></br>
+      <b>소개글</b>
+      <textarea className="changeintro" name ="mintro" onChange={e=>this.createmintro(e)} > </textarea>
+      <NavLink exact to="/main" >
+      <b></b>
+      <Button className="cmbtn" variant="outlined" color="secondary" onClick = {this.profileupdate.bind(this)} >소개글 수정</Button>
+      </NavLink>
+      </div>
     </div>
     </>
   )
