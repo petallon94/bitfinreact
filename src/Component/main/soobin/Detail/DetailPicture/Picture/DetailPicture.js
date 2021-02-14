@@ -1,9 +1,36 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 import './DetailPicture.css';
+import axios from 'axios';
 
 class DetailPicture extends Component {
+    constructor(props){
+      super(props);
+      //console.log(this.props.rnum);
+
+    this.state = {
+      picData:'',
+    }
+  } 
+//백엔드로부터 num 에 해당하는 데이터 가져오기
+onPicData=()=>{
+let url='http://localhost:9001/review/pic?rnum='+this.props.rnum;
+console.log(this.rnum);
+axios.get(url)
+.then(res=>{
+    //성공시 dto 리턴값을 받아 데이터에 넣어준다
+    this.setState({
+      picData:res.data
+    })
+    console.log(res.data);
+})
+}
+
+componentWillMount() {
+this.onPicData();
+}
     render() {
+      const {picData}=this.state;
         //settings 부분, 슬라이더의 기능을 조정할 수 있다.
        const settings = {
          dots: true,  // 점은 안 보이게

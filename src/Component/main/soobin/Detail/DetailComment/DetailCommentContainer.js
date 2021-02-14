@@ -4,7 +4,7 @@ import { DetailComment, DetailCommentWrap } from '../DetailIndex';
 class DetailCommentContainer extends Component {
     constructor(props){
         super(props);
-        console.log(this.props.rnum);
+        //console.log(this.props.rnum);
 
     }
     render() {

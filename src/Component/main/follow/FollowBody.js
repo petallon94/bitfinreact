@@ -9,16 +9,10 @@ class FollowBody extends Component {
         modalOpen: false,
     }
 };
-    openModal = () => {
-        this.setState({ modalOpen: true })
-    }
-    closeModal = () => {
-        this.setState({ modalOpen: false })
-    }
+    
     render() {
         return (
             <React.Fragment>
-                <button onClick={ this.openModal }> 모달팝업</button>
                 <Modal open={ this.state.modalOpen } close={ this.closeModal }>
                    <FollowListContainer/>
                 </Modal>

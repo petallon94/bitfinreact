@@ -18,7 +18,7 @@ class DetailComment extends Component {
 }
     answerInsert=()=>{
         this.setState({
-            acontentList: [...this.state.acontentList, {awriteday: Date.now(), amnick: store.getState().mnick, acontent: this.state.acontent}],
+            acontentList: [...this.state.acontentList, {amnick: store.getState().mnick, acontent: this.state.acontent}],
             acontent: "",
         })
         let data=this.state;
@@ -28,7 +28,7 @@ class DetailComment extends Component {
             //성공시
             //alert(res.data.mes);
             //입력값 지우기
-            
+            window.location.replace("/main/detail/"+this.state.arnum)
         }).catch(err=>{
             console.log("추가시 오류남:"+err);
             
@@ -42,6 +42,7 @@ class DetailComment extends Component {
             this.setState({
                 acontentList: res.data
             })
+            
         }).catch(err=>{
             console.log("목록 오류:"+err)
         })
@@ -53,10 +54,9 @@ class DetailComment extends Component {
         });
     }
 
-    
     handleKeyEvent = (e) => {
         if(e.key === "Enter") {
-            this.addComment();
+            this.answerInsert();
         }
     }
 
@@ -93,11 +93,14 @@ class DetailComment extends Component {
                     <div className="comment_wrapper">
                     {this.state.acontentList.map(item =>
                         <AddComment
+                        arnum={this.props.rnum}
+                        anum={item.anum}
                         amnick={item.amnick}
                         acontent={item.acontent}
                         awriteday={item.awriteday}
                         handleRemove={this.handleRemove}
                         key={item.awriteday}>
+                        history={this.props.history}
                         </AddComment>)}
                     </div>
                 </div>

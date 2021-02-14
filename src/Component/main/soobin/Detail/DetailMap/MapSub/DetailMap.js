@@ -3,9 +3,13 @@ import './DetailMap.css';
 
 const { kakao } = window;
 
-const DetailMap = () => {
-
+const DetailMap = (props) => {
+    //console.log(props.resaddr);
+    //console.log(props.resname);
     useEffect(() => {
+        let addr=props.resaddr;
+        let storename=props.resname;
+        //console.log(addr);
         const container = document.getElementById('myMap');
 		const options = {
 			center: new kakao.maps.LatLng(33.450701, 126.570667),
@@ -15,7 +19,7 @@ const DetailMap = () => {
         // 주소-좌표 변환 객체를 생성합니다
         const geocoder = new kakao.maps.services.Geocoder();
         // 주소로 좌표를 검색합니다
-        geocoder.addressSearch('주흥길13', function(result, status) {
+        geocoder.addressSearch(addr, function(result, status) {
 
                 // 정상적으로 검색이 완료됐으면 
                 if (status === kakao.maps.services.Status.OK) {
@@ -30,7 +34,7 @@ const DetailMap = () => {
 
                     // 인포윈도우로 장소에 대한 설명을 표시합니다
                     let infowindow = new kakao.maps.InfoWindow({
-                        content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
+                        content: '<div style="width:150px;text-align:center;padding:6px 0;">'+storename+'</div>'
                     });
                     infowindow.open(map, marker);
 
@@ -38,7 +42,7 @@ const DetailMap = () => {
                     map.setCenter(coords);
                 } 
             });
-    }, []);
+    });
     return (
         <div className='DetailMap'>
             <div className='DetailMap-bar'>
