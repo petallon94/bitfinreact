@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { FollowList,FollowListWrapper } from '../../../follow';
+import { FollowingList,FollowingListWrapper } from '../..';
 import axios from 'axios';
 
-class FollowListContainer extends Component {
+class FollowingListContainer extends Component {
     constructor(props){
         super(props);
         //console.log(this.props.mnum);
@@ -16,8 +16,8 @@ class FollowListContainer extends Component {
         mpic:'',
         selectData:[],
     }
-    onfollowData=()=>{
-        let url='http://localhost:9001/follow/list?mnum='+this.props.mnum;
+    onfollowingData=()=>{
+        let url='http://localhost:9001/following/list?mnum='+this.props.mnum;
         axios.get(url)
         .then(res=>{
             //console.log(res.data);
@@ -33,15 +33,15 @@ class FollowListContainer extends Component {
     }
       
       componentDidMount() {
-        this.onfollowData();
+        this.onfollowingData();
       }
     render() {
         const {selectData} = this.state
         console.log(selectData);
         return (
-            <FollowListWrapper>
+            <FollowingListWrapper>
                 {this.state.selectData.map(item =>
-                <FollowList
+                <FollowingList
                 fmnum={item.fmnum}
                 follower={item.follower}
                 mnum={item.mnum}
@@ -49,10 +49,10 @@ class FollowListContainer extends Component {
                 mnick={item.mnick}
                 mpic={item.mpic}
                 >
-                </FollowList>)}
-            </FollowListWrapper>
+                </FollowingList>)}
+            </FollowingListWrapper>
              
         )
     }
 }
-export default FollowListContainer;
+export default FollowingListContainer;

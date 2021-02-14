@@ -103,6 +103,10 @@ div.hidden_place{
     display:flex;
     align-items: center;
 }
+/* 팔로우모달 */
+.profile_information .profile_information_follow{
+    cursor: pointer;
+}
 
 .profile_information div{
     width:150px;
